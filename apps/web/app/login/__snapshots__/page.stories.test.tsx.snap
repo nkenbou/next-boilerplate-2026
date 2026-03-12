@@ -1,0 +1,449 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`/login >  1`] = `
+<div>
+  <div
+    class="noto-sans-jp-normal"
+  >
+    <div
+      class="radix-themes"
+      data-accent-color="indigo"
+      data-gray-color="slate"
+      data-has-background="true"
+      data-is-root-theme="true"
+      data-panel-background="translucent"
+      data-radius="medium"
+      data-scaling="100%"
+    >
+      <div
+        style="background-color: var(--background-color);"
+      >
+        <div
+          class="rt-Box"
+          style="background-color: var(--background-color); min-height: 100vh; display: flex; align-items: center; justify-content: center;"
+        >
+          <div
+            class="rt-Box"
+            style="width: 400px;"
+          >
+            <div
+              class="rt-reset rt-BaseCard rt-Card rt-r-size-4 rt-variant-surface"
+            >
+              <h1
+                class="rt-Heading rt-r-size-6 rt-r-ta-center rt-r-mb-5"
+              >
+                ログイン
+              </h1>
+              <form
+                action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
+                aria-label="ログインフォーム"
+              >
+                <div
+                  class="rt-Box rt-r-mb-5"
+                >
+                  <label>
+                    <div
+                      class="rt-Text rt-r-size-2 rt-r-weight-bold rt-r-mb-2"
+                    >
+                      ユーザー名
+                    </div>
+                    <div
+                      class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
+                    >
+                      <input
+                        class="rt-reset rt-TextFieldInput"
+                        name="username"
+                        placeholder="ユーザー名を入力してください"
+                        spellcheck="false"
+                      />
+                    </div>
+                  </label>
+                </div>
+                <div
+                  class="rt-Box rt-r-mb-5"
+                >
+                  <label>
+                    <div
+                      class="rt-Text rt-r-size-2 rt-r-weight-bold rt-r-mb-2"
+                    >
+                      パスワード
+                    </div>
+                    <div
+                      class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
+                    >
+                      <input
+                        class="rt-reset rt-TextFieldInput"
+                        name="password"
+                        placeholder="パスワードを入力してください"
+                        spellcheck="false"
+                        type="password"
+                      />
+                    </div>
+                  </label>
+                </div>
+                <div
+                  class="rt-Box rt-r-mt-6"
+                >
+                  <button
+                    aria-disabled="false"
+                    class="rt-reset rt-BaseButton rt-r-size-4 rt-variant-solid rt-Button"
+                    data-accent-color=""
+                    style="width: 100%;"
+                    type="submit"
+                  >
+                    ログイン
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`/login >  2`] = `
+<div>
+  <div
+    class="noto-sans-jp-normal"
+  >
+    <div
+      class="radix-themes"
+      data-accent-color="indigo"
+      data-gray-color="slate"
+      data-has-background="true"
+      data-is-root-theme="true"
+      data-panel-background="translucent"
+      data-radius="medium"
+      data-scaling="100%"
+    >
+      <div
+        style="background-color: var(--background-color);"
+      >
+        <div
+          class="rt-Box"
+          style="background-color: var(--background-color); min-height: 100vh; display: flex; align-items: center; justify-content: center;"
+        >
+          <div
+            class="rt-Box"
+            style="width: 400px;"
+          >
+            <div
+              class="rt-reset rt-BaseCard rt-Card rt-r-size-4 rt-variant-surface"
+            >
+              <h1
+                class="rt-Heading rt-r-size-6 rt-r-ta-center rt-r-mb-5"
+              >
+                ログイン
+              </h1>
+              <form
+                action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
+                aria-label="ログインフォーム"
+              >
+                <div
+                  class="rt-Box rt-r-mb-5"
+                >
+                  <label>
+                    <div
+                      class="rt-Text rt-r-size-2 rt-r-weight-bold rt-r-mb-2"
+                    >
+                      ユーザー名
+                    </div>
+                    <div
+                      class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
+                    >
+                      <input
+                        aria-describedby="_r_2_"
+                        class="rt-reset rt-TextFieldInput"
+                        name="username"
+                        placeholder="ユーザー名を入力してください"
+                        spellcheck="false"
+                      />
+                    </div>
+                  </label>
+                  <p
+                    aria-live="polite"
+                    class="rt-Text"
+                    data-accent-color="red"
+                    id="_r_2_"
+                    role="alert"
+                  >
+                    ユーザー名を入力してください。
+                  </p>
+                </div>
+                <div
+                  class="rt-Box rt-r-mb-5"
+                >
+                  <label>
+                    <div
+                      class="rt-Text rt-r-size-2 rt-r-weight-bold rt-r-mb-2"
+                    >
+                      パスワード
+                    </div>
+                    <div
+                      class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
+                    >
+                      <input
+                        class="rt-reset rt-TextFieldInput"
+                        name="password"
+                        placeholder="パスワードを入力してください"
+                        spellcheck="false"
+                        type="password"
+                        value="foo-password"
+                      />
+                    </div>
+                  </label>
+                </div>
+                <div
+                  class="rt-Box rt-r-mt-6"
+                >
+                  <button
+                    aria-disabled="false"
+                    class="rt-reset rt-BaseButton rt-r-size-4 rt-variant-solid rt-Button"
+                    data-accent-color=""
+                    style="width: 100%;"
+                    type="submit"
+                  >
+                    ログイン
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`/login >  3`] = `
+<div>
+  <div
+    class="noto-sans-jp-normal"
+  >
+    <div
+      class="radix-themes"
+      data-accent-color="indigo"
+      data-gray-color="slate"
+      data-has-background="true"
+      data-is-root-theme="true"
+      data-panel-background="translucent"
+      data-radius="medium"
+      data-scaling="100%"
+    >
+      <div
+        style="background-color: var(--background-color);"
+      >
+        <div
+          class="rt-Box"
+          style="background-color: var(--background-color); min-height: 100vh; display: flex; align-items: center; justify-content: center;"
+        >
+          <div
+            class="rt-Box"
+            style="width: 400px;"
+          >
+            <div
+              class="rt-reset rt-BaseCard rt-Card rt-r-size-4 rt-variant-surface"
+            >
+              <h1
+                class="rt-Heading rt-r-size-6 rt-r-ta-center rt-r-mb-5"
+              >
+                ログイン
+              </h1>
+              <form
+                action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
+                aria-label="ログインフォーム"
+              >
+                <div
+                  class="rt-Box rt-r-mb-5"
+                >
+                  <label>
+                    <div
+                      class="rt-Text rt-r-size-2 rt-r-weight-bold rt-r-mb-2"
+                    >
+                      ユーザー名
+                    </div>
+                    <div
+                      class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
+                    >
+                      <input
+                        class="rt-reset rt-TextFieldInput"
+                        name="username"
+                        placeholder="ユーザー名を入力してください"
+                        spellcheck="false"
+                        value="foo"
+                      />
+                    </div>
+                  </label>
+                </div>
+                <div
+                  class="rt-Box rt-r-mb-5"
+                >
+                  <label>
+                    <div
+                      class="rt-Text rt-r-size-2 rt-r-weight-bold rt-r-mb-2"
+                    >
+                      パスワード
+                    </div>
+                    <div
+                      class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
+                    >
+                      <input
+                        aria-describedby="_r_5_"
+                        class="rt-reset rt-TextFieldInput"
+                        name="password"
+                        placeholder="パスワードを入力してください"
+                        spellcheck="false"
+                        type="password"
+                      />
+                    </div>
+                  </label>
+                  <p
+                    aria-live="polite"
+                    class="rt-Text"
+                    data-accent-color="red"
+                    id="_r_5_"
+                    role="alert"
+                  >
+                    パスワードを入力してください。
+                  </p>
+                </div>
+                <div
+                  class="rt-Box rt-r-mt-6"
+                >
+                  <button
+                    aria-disabled="false"
+                    class="rt-reset rt-BaseButton rt-r-size-4 rt-variant-solid rt-Button"
+                    data-accent-color=""
+                    style="width: 100%;"
+                    type="submit"
+                  >
+                    ログイン
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`/login >  4`] = `
+<div>
+  <div
+    class="noto-sans-jp-normal"
+  >
+    <div
+      class="radix-themes"
+      data-accent-color="indigo"
+      data-gray-color="slate"
+      data-has-background="true"
+      data-is-root-theme="true"
+      data-panel-background="translucent"
+      data-radius="medium"
+      data-scaling="100%"
+    >
+      <div
+        style="background-color: var(--background-color);"
+      >
+        <div
+          class="rt-Box"
+          style="background-color: var(--background-color); min-height: 100vh; display: flex; align-items: center; justify-content: center;"
+        >
+          <div
+            class="rt-Box"
+            style="width: 400px;"
+          >
+            <div
+              class="rt-reset rt-BaseCard rt-Card rt-r-size-4 rt-variant-surface"
+            >
+              <h1
+                class="rt-Heading rt-r-size-6 rt-r-ta-center rt-r-mb-5"
+              >
+                ログイン
+              </h1>
+              <form
+                action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
+                aria-label="ログインフォーム"
+              >
+                <div
+                  class="rt-Box rt-r-mb-5"
+                >
+                  <label>
+                    <div
+                      class="rt-Text rt-r-size-2 rt-r-weight-bold rt-r-mb-2"
+                    >
+                      ユーザー名
+                    </div>
+                    <div
+                      class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
+                    >
+                      <input
+                        class="rt-reset rt-TextFieldInput"
+                        name="username"
+                        placeholder="ユーザー名を入力してください"
+                        spellcheck="false"
+                        value="foo"
+                      />
+                    </div>
+                  </label>
+                </div>
+                <div
+                  class="rt-Box rt-r-mb-5"
+                >
+                  <label>
+                    <div
+                      class="rt-Text rt-r-size-2 rt-r-weight-bold rt-r-mb-2"
+                    >
+                      パスワード
+                    </div>
+                    <div
+                      class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
+                    >
+                      <input
+                        class="rt-reset rt-TextFieldInput"
+                        name="password"
+                        placeholder="パスワードを入力してください"
+                        spellcheck="false"
+                        type="password"
+                        value="foo-password"
+                      />
+                    </div>
+                  </label>
+                </div>
+                <div
+                  class="rt-Box rt-r-mt-6"
+                >
+                  <p
+                    aria-live="polite"
+                    class="rt-Text"
+                    data-accent-color="red"
+                    role="alert"
+                  >
+                    ユーザー名またはパスワードが正しくありません。
+                  </p>
+                  <button
+                    aria-disabled="false"
+                    class="rt-reset rt-BaseButton rt-r-size-4 rt-variant-solid rt-Button"
+                    data-accent-color=""
+                    style="width: 100%;"
+                    type="submit"
+                  >
+                    ログイン
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

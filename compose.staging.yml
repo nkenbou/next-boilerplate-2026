@@ -1,0 +1,53 @@
+services:
+  web:
+    container_name: boilerplate-web
+    image: ghcr.io/${GITHUB_REPOSITORY}/web:rc
+    restart: always
+    logging:
+      driver: journald
+    networks:
+      - app
+    depends_on:
+      - db
+    env_file:
+      - ./secrets/APP_ENV
+    environment:
+      - NODE_EXTRA_CA_CERTS=.docker/certs/cert.pem
+      - VIRTUAL_HOST=boilerplate.example.com
+      - CERT_NAME=cert
+
+  db:
+    container_name: boilerplate-db
+    image: postgres:17.4
+    shm_size: 128mb
+    restart: always
+    logging:
+      driver: journald
+    networks:
+      - app
+    ports:
+      - 5432:5432
+    command:
+      - "-c"
+      - "config_file=/etc/postgresql/postgresql.conf"
+    volumes:
+      - db:/var/lib/postgresql/data
+      - ./db/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./db:/docker-entrypoint-initdb.d
+    env_file:
+      - ./.env.postgres
+    environment:
+      - POSTGRES_PASSWORD_FILE=/run/secrets/POSTGRES_PASSWORD_FILE
+    secrets:
+      - POSTGRES_PASSWORD_FILE
+
+volumes:
+  db:
+
+networks:
+  app:
+    external: true
+
+secrets:
+  POSTGRES_PASSWORD_FILE:
+    file: ./secrets/POSTGRES_PASSWORD_FILE

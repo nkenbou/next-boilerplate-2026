@@ -1,0 +1,45 @@
+{
+  "name": "App Dev",
+  "dockerComposeFile": "../compose.yml",
+  "service": "web",
+  "workspaceFolder": "/workspace",
+  "remoteUser": "node",
+  "postCreateCommand": "pnpm install --frozen-lockfile && pnpm db:generate && pnpm db:deploy && pnpm db:seed",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "csstools.postcss",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker",
+        "Prisma.prisma",
+        "ritwickdey.liveserver",
+        "streetsidesoftware.code-spell-checker",
+        "stylelint.vscode-stylelint",
+        "ms-playwright.playwright"
+      ],
+      "settings": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "files.insertFinalNewline": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSaveMode": "file",
+        "editor.formatOnPaste": true,
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll": "explicit"
+        },
+        "prettier.trailingComma": "all",
+        "eslint.workingDirectories": [
+          {
+            "mode": "auto"
+          }
+        ],
+        "[prisma]": {
+          "editor.defaultFormatter": "Prisma.prisma"
+        }
+      }
+    }
+  }
+}

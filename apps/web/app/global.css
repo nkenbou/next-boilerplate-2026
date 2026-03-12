@@ -1,0 +1,18 @@
+@import url("@radix-ui/themes/styles.css");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --background-color: var(--indigo-2);
+  --header-height: 48px;
+}
+
+.radix-themes {
+  --default-font-family: var(--font-noto-sans-jp);
+}

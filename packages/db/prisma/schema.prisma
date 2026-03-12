@@ -1,0 +1,38 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider      = "prisma-client"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+  output        = "../.prisma"
+  moduleFormat  = "esm"
+}
+
+generator fabbrica {
+  provider     = "prisma-fabbrica"
+  moduleFormat = "esm"
+}
+
+model User {
+  userId      String @id @default(uuid()) @map("user_id")
+  username    String @unique
+  password    String
+  displayName String @map("display_name")
+  todos       Todo[]
+
+  @@map("users")
+}
+
+model Todo {
+  todoId    String    @id @default(uuid()) @map("todo_id")
+  title     String
+  status    String    @default("pending")
+  createdAt DateTime  @default(now()) @map("created_at")
+  dueDate   DateTime? @map("due_date")
+  userId    String    @map("user_id")
+  user      User      @relation(fields: [userId], references: [userId])
+
+  @@map("todos")
+}

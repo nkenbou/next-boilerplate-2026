@@ -1,0 +1,53 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "globalEnv": [
+    "NODE_ENV",
+    "CI",
+    "STORYBOOK_COMPONENT_PATHS",
+    "DATABASE_URL",
+    "SESSION_SECRET",
+    "ADMIN_USERNAME",
+    "ADMIN_PASSWORD"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "unit": {
+      "dependsOn": ["build"],
+      "inputs": ["**/*.ts", "**/*.tsx"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "fix": {
+      "dependsOn": ["^fix"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "storybook": {
+      "cache": false,
+      "persistent": true
+    },
+    "db:generate": {
+      "cache": false
+    },
+    "db:migrate": {
+      "cache": false,
+      "persistent": true
+    },
+    "db:deploy": {
+      "cache": false
+    },
+    "db:push": {
+      "cache": false
+    },
+    "db:seed": {
+      "cache": false
+    }
+  }
+}

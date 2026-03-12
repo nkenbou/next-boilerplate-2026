@@ -1,0 +1,47 @@
+{
+  "name": "@app/db",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./prisma-client": "./.prisma/client.ts",
+    "./client": "./src/client.ts",
+    "./factories": "./src/factories.ts",
+    "./fabbrica": "./src/__generated__/fabbrica/index.js"
+  },
+  "scripts": {
+    "build": "prisma generate",
+    "db:generate": "prisma generate",
+    "db:migrate": "run-p -l -c --aggregate-output db:migrate:*",
+    "db:migrate:dev": "prisma migrate dev --skip-generate",
+    "db:migrate:test": "DATABASE_URL=${DATABASE_URL}?schema=test prisma migrate dev --skip-generate",
+    "db:deploy": "run-p -l -c --aggregate-output db:deploy:*",
+    "db:deploy:dev": "prisma migrate deploy",
+    "db:deploy:test": "DATABASE_URL=${DATABASE_URL}?schema=test prisma migrate deploy",
+    "db:push": "run-p -l -c --aggregate-output db:push:*",
+    "db:push:dev": "prisma db push --skip-generate",
+    "db:push:test": "DATABASE_URL=${DATABASE_URL}?schema=test prisma db push --skip-generate",
+    "db:seed": "run-p -l -c --aggregate-output db:seed:*",
+    "db:seed:dev": "tsx ./src/seed.ts",
+    "db:seed:test": "DATABASE_URL=${DATABASE_URL}?schema=test tsx ./src/seed.ts",
+    "format": "prisma format",
+    "lint": "eslint . --max-warnings 0",
+    "studio": "prisma studio"
+  },
+  "devDependencies": {
+    "@app/eslint-config": "workspace:*",
+    "@app/typescript-config": "workspace:*",
+    "@quramy/prisma-fabbrica": "^2.3.3",
+    "@types/bcryptjs": "^3.0.0",
+    "@types/node": "22.12.0",
+    "eslint": "^9.19.0",
+    "npm-run-all": "^4.1.5",
+    "prisma": "^6.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.0.0",
+    "bcryptjs": "^3.0.3"
+  }
+}

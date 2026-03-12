@@ -1,0 +1,54 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: ./.devcontainer/Dockerfile
+    tty: true
+    ports:
+      - 3000
+      - 6006
+    depends_on:
+      - db
+    volumes:
+      - .:/workspace
+      - pnpm-store:/pnpm/store
+      - node_modules:/workspace/node_modules
+      - /mnt/wslg:/mnt/wslg
+      - claude-code-config:/home/node/.claude
+      - gemini-cli-config:/home/node/.gemini
+    env_file:
+      - ./.env
+      - ./.env.local
+    environment:
+      - PULSE_SERVER=${PULSE_SERVER}
+      - CLAUDE_CONFIG_DIR=/home/node/.claude
+
+  db:
+    image: postgres:17.4
+    shm_size: 128mb
+    ports:
+      - 5432
+    command:
+      - "-c"
+      - "config_file=/etc/postgresql/postgresql.conf"
+    volumes:
+      - db:/var/lib/postgresql/data
+      - ./db/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./db:/docker-entrypoint-initdb.d
+    env_file:
+      - ./.env.postgres
+    environment:
+      - POSTGRES_PASSWORD_FILE=/run/secrets/POSTGRES_PASSWORD_FILE
+    secrets:
+      - POSTGRES_PASSWORD_FILE
+
+volumes:
+  pnpm-store:
+  node_modules:
+  db:
+  claude-code-config:
+  gemini-cli-config:
+
+secrets:
+  POSTGRES_PASSWORD_FILE:
+    file: ./.docker/secrets/POSTGRES_PASSWORD

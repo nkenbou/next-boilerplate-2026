@@ -1,0 +1,9 @@
+{
+  "extends": "@app/typescript-config/base.json",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "include": ["src", "jest.config.ts", ".jest/*"],
+  "exclude": ["node_modules", "dist"]
+}

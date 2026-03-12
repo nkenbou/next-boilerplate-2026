@@ -1,0 +1,49 @@
+# Dependencies
+node_modules
+.pnpm-store
+.pnp
+.pnp.js
+
+# Local env files
+.env*.local
+
+# Testing
+coverage
+**/vrt/*
+!**/vrt/expected
+
+# Turbo
+.turbo
+
+# Vercel
+.vercel
+
+# Build Outputs
+.next/
+out/
+build
+dist
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Misc
+.DS_Store
+*.pem
+.vscode
+
+# AI
+.local
+.claude/settings.local.json
+
+# data
+*.dump
+
+# Secrets
+.docker/secrets/*
+!.docker/secrets/.gitkeep
+secrets/*
+!secrets/.gitkeep

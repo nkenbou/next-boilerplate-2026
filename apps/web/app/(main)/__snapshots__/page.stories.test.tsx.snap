@@ -1,0 +1,47 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`/ >  1`] = `
+<div>
+  <div
+    class="noto-sans-jp-normal"
+  >
+    <div
+      class="radix-themes"
+      data-accent-color="indigo"
+      data-gray-color="slate"
+      data-has-background="true"
+      data-is-root-theme="true"
+      data-panel-background="translucent"
+      data-radius="medium"
+      data-scaling="100%"
+    >
+      <div
+        style="background-color: var(--background-color);"
+      >
+        <div
+          class="rt-Box"
+        >
+          <h1
+            class="rt-Heading rt-r-size-6 rt-r-mb-4"
+          >
+            ようこそ、
+            テストユーザー
+            さん
+          </h1>
+          <span
+            class="rt-Text"
+          >
+            <a
+              class="rt-Text rt-reset rt-Link rt-underline-auto"
+              data-accent-color=""
+              href="/todos"
+            >
+              Todo 一覧を見る
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

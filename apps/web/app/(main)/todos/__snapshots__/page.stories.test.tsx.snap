@@ -1,0 +1,102 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`/todos >  1`] = `
+<div>
+  <div
+    class="noto-sans-jp-normal"
+  >
+    <div
+      class="radix-themes"
+      data-accent-color="indigo"
+      data-gray-color="slate"
+      data-has-background="true"
+      data-is-root-theme="true"
+      data-panel-background="translucent"
+      data-radius="medium"
+      data-scaling="100%"
+    >
+      <div
+        style="background-color: var(--background-color);"
+      >
+        <div
+          class="rt-Flex rt-r-fd-column rt-r-gap-3 rt-r-mt-4"
+        >
+          <div
+            class="rt-reset rt-BaseCard rt-Card rt-r-size-1 rt-variant-surface"
+          >
+            <div
+              class="rt-Flex rt-r-ai-center rt-r-jc-space-between"
+            >
+              <span
+                class="rt-Text"
+                style="text-decoration: none; color: inherit;"
+              >
+                タスク1
+              </span>
+              <form
+                action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
+              >
+                <button
+                  class="rt-reset rt-BaseButton rt-r-size-1 rt-variant-soft rt-Button"
+                  data-accent-color=""
+                  type="submit"
+                >
+                  完了
+                </button>
+              </form>
+            </div>
+          </div>
+          <div
+            class="rt-reset rt-BaseCard rt-Card rt-r-size-1 rt-variant-surface"
+          >
+            <div
+              class="rt-Flex rt-r-ai-center rt-r-jc-space-between"
+            >
+              <span
+                class="rt-Text"
+                style="text-decoration: line-through; color: var(--gray-9);"
+              >
+                タスク2
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`/todos >  2`] = `
+<div>
+  <div
+    class="noto-sans-jp-normal"
+  >
+    <div
+      class="radix-themes"
+      data-accent-color="indigo"
+      data-gray-color="slate"
+      data-has-background="true"
+      data-is-root-theme="true"
+      data-panel-background="translucent"
+      data-radius="medium"
+      data-scaling="100%"
+    >
+      <div
+        style="background-color: var(--background-color);"
+      >
+        <div
+          class="rt-Box rt-r-py-4"
+        >
+          <span
+            class="rt-Text"
+            data-accent-color="gray"
+          >
+            Todo がありません
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

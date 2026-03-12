@@ -1,0 +1,21 @@
+{
+  "extends": "@app/typescript-config/nextjs.json",
+  "compilerOptions": {
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "types": ["vitest/globals"]
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*",
+    ".storybook/**/*",
+    "next-env.d.ts"
+  ],
+  "exclude": ["node_modules"]
+}

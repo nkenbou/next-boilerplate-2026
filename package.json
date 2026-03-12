@@ -1,0 +1,39 @@
+{
+  "name": "app",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "storybook": "turbo run storybook",
+    "test": "pnpm lint && pnpm unit",
+    "unit": "turbo run unit",
+    "lint": "turbo run lint",
+    "fix": "turbo run fix",
+    "db:generate": "turbo run db:generate",
+    "db:migrate": "turbo run db:migrate",
+    "db:deploy": "turbo run db:deploy",
+    "db:push": "turbo run db:push",
+    "db:seed": "turbo run db:seed"
+  },
+  "devDependencies": {
+    "@app/eslint-config": "workspace:*",
+    "@app/typescript-config": "workspace:*",
+    "turbo": "^2.3.3"
+  },
+  "packageManager": "pnpm@10.0.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "pnpm": {
+    "overrides": {
+      "reg-cli": "0.18.6"
+    },
+    "peerDependencyRules": {
+      "allowedVersions": {
+        "@storybook/test>storybook": "10",
+        "@storybook/instrumenter>storybook": "10",
+        "ts-jest>jest": "30"
+      }
+    }
+  }
+}
