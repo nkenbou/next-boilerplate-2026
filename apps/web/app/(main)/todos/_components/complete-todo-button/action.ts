@@ -1,16 +1,22 @@
 "use server";
 
-import { TodoId } from "@app/command-domain";
 import { createTodoProcessor } from "@app/command-interface-adapter-impl/processors";
 import { revalidatePath } from "next/cache";
+import {
+  CompleteTodoFormState,
+  type CompleteTodoState,
+} from "./complete-todo-state";
+import { completeTodoController } from "./controller";
 
-export async function completeTodo(todoId: string): Promise<void> {
-  const presenter = {
-    presentTodo(): void {},
-    presentAnyError(_err: unknown): void {},
-  };
+export type { CompleteTodoState };
 
-  const processor = createTodoProcessor(presenter);
-  await processor.complete(TodoId.of(todoId));
-  revalidatePath("/todos");
+export async function completeTodo(
+  todoId: string,
+  prevState: CompleteTodoState,
+  _formData: FormData,
+): Promise<CompleteTodoState> {
+  const presenter = new CompleteTodoFormState(prevState, revalidatePath);
+  const command = createTodoProcessor(presenter);
+  await completeTodoController(todoId, command);
+  return presenter.getState();
 }
