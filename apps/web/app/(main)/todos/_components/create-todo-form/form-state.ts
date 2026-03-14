@@ -1,6 +1,9 @@
 import type { Todo } from "@app/command-domain";
 import type { TodoPresenter } from "@app/command-interface-adapter-if";
-import type { CreateTodoFormPresenter, TodoFormErrorType } from "./controller";
+import type {
+  CreateTodoFormPresenter,
+  TodoFormErrorType,
+} from "./create-todo-controller";
 
 const MESSAGES: Record<TodoFormErrorType, string> = {
   INVALID_TODO_TITLE_EMPTY: "タイトルを入力してください。",

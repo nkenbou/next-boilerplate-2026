@@ -2,11 +2,11 @@
 
 import { createTodoProcessor } from "@app/command-interface-adapter-impl/processors";
 import { revalidatePath } from "next/cache";
+import { completeTodoController } from "./complete-todo-controller";
 import {
   CompleteTodoFormState,
   type CompleteTodoState,
 } from "./complete-todo-state";
-import { completeTodoController } from "./controller";
 
 export type { CompleteTodoState };
 

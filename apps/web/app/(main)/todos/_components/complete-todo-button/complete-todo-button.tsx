@@ -3,7 +3,7 @@
 import { TodoIdDTO } from "@app/query/dto";
 import { Button } from "@radix-ui/themes";
 import { JSX, useActionState } from "react";
-import { completeTodo } from "./action";
+import { completeTodo } from "./complete-todo-action";
 
 type Props = {
   readonly todoId: TodoIdDTO;

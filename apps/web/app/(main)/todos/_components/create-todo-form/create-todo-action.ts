@@ -2,7 +2,7 @@
 
 import { createTodoProcessor } from "@app/command-interface-adapter-impl/processors";
 import { revalidatePath } from "next/cache";
-import { createTodoController } from "./controller";
+import { createTodoController } from "./create-todo-controller";
 import { CreateTodoFormState, type CreateTodoState } from "./form-state";
 
 export type { CreateTodoState };
