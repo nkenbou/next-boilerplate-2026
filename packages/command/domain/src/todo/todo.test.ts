@@ -39,6 +39,7 @@ describe("Todo", () => {
       expect(dto.id).toBe("todo-id-1");
       expect(dto.title).toBe("Test Todo");
       expect(dto.status).toBe("pending");
+      expect(dto.createdAt).toBeInstanceOf(Date);
     });
   });
 });

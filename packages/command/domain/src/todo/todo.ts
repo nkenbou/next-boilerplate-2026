@@ -1,5 +1,6 @@
 import { DomainError } from "../domain-error";
 import { UserId } from "../user";
+import { CreatedAt } from "./created-at";
 import { DueDate } from "./due-date";
 import { TodoDescription } from "./todo-description";
 import { TodoId } from "./todo-id";
@@ -17,7 +18,7 @@ export class Todo {
     public readonly id: TodoId,
     public readonly title: TodoTitle,
     public readonly status: TodoStatus,
-    public readonly createdAt: Date,
+    public readonly createdAt: CreatedAt,
     public readonly userId: UserId,
     public readonly description: TodoDescription,
     public readonly dueDate: DueDate,
@@ -51,13 +52,13 @@ export class Todo {
     description: string;
   } {
     return {
-      id: this.id.value,
-      title: this.title.value,
-      status: this.status.value,
-      createdAt: this.createdAt,
+      id: this.id.toDTO(),
+      title: this.title.toDTO(),
+      status: this.status.toDTO(),
+      createdAt: this.createdAt.toDTO(),
       dueDate: this.dueDate.toDTO(),
-      userId: this.userId.value,
-      description: this.description.value,
+      userId: this.userId.toDTO(),
+      description: this.description.toDTO(),
     };
   }
 
@@ -72,7 +73,7 @@ export class Todo {
       id,
       title,
       TodoStatus.pending(),
-      new Date(),
+      CreatedAt.now(),
       userId,
       description,
       dueDate ?? DueDate.of(),
@@ -83,7 +84,7 @@ export class Todo {
     id: TodoId,
     title: TodoTitle,
     status: TodoStatus,
-    createdAt: Date,
+    createdAt: CreatedAt,
     userId: UserId,
     description: TodoDescription,
     dueDate: DueDate,

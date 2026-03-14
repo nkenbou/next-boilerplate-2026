@@ -1,6 +1,7 @@
 export { DomainError } from "./domain-error";
 export { DisplayName, User, UserId, UserPassword, Username } from "./user";
 export {
+  CreatedAt,
   DueDate,
   Todo,
   TodoDescription,
