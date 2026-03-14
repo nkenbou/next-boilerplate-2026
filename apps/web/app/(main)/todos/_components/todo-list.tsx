@@ -38,6 +38,11 @@ export function TodoList({ todos }: Props): JSX.Element {
                   {todo.description}
                 </Text>
               )}
+              {todo.dueDate && (
+                <Text as="p" size="1" color="gray">
+                  期限: {todo.dueDate.toLocaleDateString("ja-JP")}
+                </Text>
+              )}
             </Box>
             {todo.status === "pending" && (
               <CompleteTodoButton todoId={todo.id} />

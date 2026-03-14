@@ -7,8 +7,12 @@ const { Default, Empty } = composeStories(stories);
 describe("/todos", () => {
   it(Default.name, () => {
     const { container } = render(<Default />);
-    expect(screen.getByText("タスク1")).toBeInTheDocument();
-    expect(screen.getByText("タスク2")).toBeInTheDocument();
+    expect(
+      screen.getByText("pending / description なし / dueDate なし"),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText("completed / description あり / dueDate あり"),
+    ).toBeInTheDocument();
     expect(container).toMatchSnapshot();
   });
 
