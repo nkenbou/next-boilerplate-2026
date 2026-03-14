@@ -5,11 +5,13 @@ import type {
   TodoFormErrorType,
 } from "./create-todo-controller";
 
-const MESSAGES: Record<TodoFormErrorType, string> = {
+export const MESSAGES: Record<TodoFormErrorType, string> = {
   INVALID_TODO_TITLE_EMPTY: "タイトルを入力してください。",
   INVALID_TODO_TITLE_TOO_LONG: "タイトルは200文字以内にしてください。",
   INVALID_TODO_DESCRIPTION_TOO_LONG: "説明は500文字以内にしてください。",
 };
+
+export const ANY_ERROR_MESSAGE = "タスクの作成に失敗しました。";
 
 export type CreateTodoState =
   | {
@@ -53,7 +55,7 @@ export class CreateTodoFormState
   }
 
   presentAnyError(_err: unknown): void {
-    this.state = { messages: ["タスクの作成に失敗しました。"] };
+    this.state = { messages: [ANY_ERROR_MESSAGE] };
   }
 
   getState(): CreateTodoState {

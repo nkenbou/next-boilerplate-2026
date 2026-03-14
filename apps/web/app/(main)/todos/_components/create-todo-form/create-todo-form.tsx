@@ -1,24 +1,22 @@
 "use client";
 
 import { Box, Button, Flex, TextArea, TextField } from "@radix-ui/themes";
-import { type JSX, useActionState } from "react";
+import { type JSX } from "react";
 import { ErrorMessagePanel } from "#components/message-panel";
-import { SessionUserId } from "#lib/session-types";
-import { createTodo } from "./create-todo-action";
+import { type CreateTodoState } from "./form-state";
 
 type Props = {
-  readonly userId: SessionUserId;
+  readonly state?: CreateTodoState;
+  readonly createTodoAction: (formData: FormData) => void;
 };
 
-export function CreateTodoForm({ userId }: Props): JSX.Element {
-  const [state, action] = useActionState(
-    createTodo.bind(null, userId),
-    undefined,
-  );
-
+export function CreateTodoForm({
+  state,
+  createTodoAction,
+}: Props): JSX.Element {
   return (
     <Box>
-      <form action={action}>
+      <form action={createTodoAction}>
         <Flex direction="column" gap="2">
           <TextField.Root
             name="title"

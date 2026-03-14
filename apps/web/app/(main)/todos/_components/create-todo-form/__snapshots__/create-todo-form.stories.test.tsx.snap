@@ -1,0 +1,348 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CreateTodoForm >  1`] = `
+<div>
+  <div
+    class="noto-sans-jp-normal"
+  >
+    <div
+      class="radix-themes"
+      data-accent-color="indigo"
+      data-gray-color="slate"
+      data-has-background="true"
+      data-is-root-theme="true"
+      data-panel-background="translucent"
+      data-radius="medium"
+      data-scaling="100%"
+    >
+      <div
+        style="background-color: var(--background-color);"
+      >
+        <div
+          class="rt-Box"
+        >
+          <form
+            action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
+          >
+            <div
+              class="rt-Flex rt-r-fd-column rt-r-gap-2"
+            >
+              <div
+                class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
+              >
+                <input
+                  class="rt-reset rt-TextFieldInput"
+                  name="title"
+                  placeholder="新しいタスクを入力..."
+                  spellcheck="false"
+                />
+              </div>
+              <div
+                class="rt-TextAreaRoot rt-r-size-2 rt-variant-surface"
+              >
+                <textarea
+                  class="rt-reset rt-TextAreaInput"
+                  name="description"
+                  placeholder="説明（任意）"
+                />
+              </div>
+              <button
+                class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button"
+                data-accent-color=""
+                type="submit"
+              >
+                追加
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CreateTodoForm >  2`] = `
+<div>
+  <div
+    class="noto-sans-jp-normal"
+  >
+    <div
+      class="radix-themes"
+      data-accent-color="indigo"
+      data-gray-color="slate"
+      data-has-background="true"
+      data-is-root-theme="true"
+      data-panel-background="translucent"
+      data-radius="medium"
+      data-scaling="100%"
+    >
+      <div
+        style="background-color: var(--background-color);"
+      >
+        <div
+          class="rt-Box"
+        >
+          <form
+            action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
+          >
+            <div
+              class="rt-Flex rt-r-fd-column rt-r-gap-2"
+            >
+              <div
+                class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
+              >
+                <input
+                  class="rt-reset rt-TextFieldInput"
+                  name="title"
+                  placeholder="新しいタスクを入力..."
+                  spellcheck="false"
+                  value=""
+                />
+              </div>
+              <p
+                aria-live="polite"
+                class="rt-Text"
+                data-accent-color="red"
+                role="alert"
+              >
+                タイトルを入力してください。
+              </p>
+              <div
+                class="rt-TextAreaRoot rt-r-size-2 rt-variant-surface"
+              >
+                <textarea
+                  class="rt-reset rt-TextAreaInput"
+                  name="description"
+                  placeholder="説明（任意）"
+                />
+              </div>
+              <button
+                class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button"
+                data-accent-color=""
+                type="submit"
+              >
+                追加
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CreateTodoForm >  3`] = `
+<div>
+  <div
+    class="noto-sans-jp-normal"
+  >
+    <div
+      class="radix-themes"
+      data-accent-color="indigo"
+      data-gray-color="slate"
+      data-has-background="true"
+      data-is-root-theme="true"
+      data-panel-background="translucent"
+      data-radius="medium"
+      data-scaling="100%"
+    >
+      <div
+        style="background-color: var(--background-color);"
+      >
+        <div
+          class="rt-Box"
+        >
+          <form
+            action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
+          >
+            <div
+              class="rt-Flex rt-r-fd-column rt-r-gap-2"
+            >
+              <div
+                class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
+              >
+                <input
+                  class="rt-reset rt-TextFieldInput"
+                  name="title"
+                  placeholder="新しいタスクを入力..."
+                  spellcheck="false"
+                  value="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                />
+              </div>
+              <p
+                aria-live="polite"
+                class="rt-Text"
+                data-accent-color="red"
+                role="alert"
+              >
+                タイトルは200文字以内にしてください。
+              </p>
+              <div
+                class="rt-TextAreaRoot rt-r-size-2 rt-variant-surface"
+              >
+                <textarea
+                  class="rt-reset rt-TextAreaInput"
+                  name="description"
+                  placeholder="説明（任意）"
+                />
+              </div>
+              <button
+                class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button"
+                data-accent-color=""
+                type="submit"
+              >
+                追加
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CreateTodoForm >  4`] = `
+<div>
+  <div
+    class="noto-sans-jp-normal"
+  >
+    <div
+      class="radix-themes"
+      data-accent-color="indigo"
+      data-gray-color="slate"
+      data-has-background="true"
+      data-is-root-theme="true"
+      data-panel-background="translucent"
+      data-radius="medium"
+      data-scaling="100%"
+    >
+      <div
+        style="background-color: var(--background-color);"
+      >
+        <div
+          class="rt-Box"
+        >
+          <form
+            action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
+          >
+            <div
+              class="rt-Flex rt-r-fd-column rt-r-gap-2"
+            >
+              <div
+                class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
+              >
+                <input
+                  class="rt-reset rt-TextFieldInput"
+                  name="title"
+                  placeholder="新しいタスクを入力..."
+                  spellcheck="false"
+                  value="テストタスク"
+                />
+              </div>
+              <div
+                class="rt-TextAreaRoot rt-r-size-2 rt-variant-surface"
+              >
+                <textarea
+                  class="rt-reset rt-TextAreaInput"
+                  name="description"
+                  placeholder="説明（任意）"
+                >
+                  aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                </textarea>
+              </div>
+              <p
+                aria-live="polite"
+                class="rt-Text"
+                data-accent-color="red"
+                role="alert"
+              >
+                説明は500文字以内にしてください。
+              </p>
+              <button
+                class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button"
+                data-accent-color=""
+                type="submit"
+              >
+                追加
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CreateTodoForm >  5`] = `
+<div>
+  <div
+    class="noto-sans-jp-normal"
+  >
+    <div
+      class="radix-themes"
+      data-accent-color="indigo"
+      data-gray-color="slate"
+      data-has-background="true"
+      data-is-root-theme="true"
+      data-panel-background="translucent"
+      data-radius="medium"
+      data-scaling="100%"
+    >
+      <div
+        style="background-color: var(--background-color);"
+      >
+        <div
+          class="rt-Box"
+        >
+          <form
+            action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
+          >
+            <div
+              class="rt-Flex rt-r-fd-column rt-r-gap-2"
+            >
+              <div
+                class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
+              >
+                <input
+                  class="rt-reset rt-TextFieldInput"
+                  name="title"
+                  placeholder="新しいタスクを入力..."
+                  spellcheck="false"
+                />
+              </div>
+              <div
+                class="rt-TextAreaRoot rt-r-size-2 rt-variant-surface"
+              >
+                <textarea
+                  class="rt-reset rt-TextAreaInput"
+                  name="description"
+                  placeholder="説明（任意）"
+                />
+              </div>
+              <button
+                class="rt-reset rt-BaseButton rt-r-size-2 rt-variant-solid rt-Button"
+                data-accent-color=""
+                type="submit"
+              >
+                追加
+              </button>
+            </div>
+            <p
+              aria-live="polite"
+              class="rt-Text"
+              data-accent-color="red"
+              role="alert"
+            >
+              タスクの作成に失敗しました。
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
