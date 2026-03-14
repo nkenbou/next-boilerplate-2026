@@ -4,15 +4,7 @@ import { Box, Button, Flex, TextField } from "@radix-ui/themes";
 import { type JSX, useActionState } from "react";
 import { ErrorMessagePanel } from "#components/message-panel";
 import { SessionUserId } from "#lib/session-types";
-import { createTodo } from "./action";
-
-type CreateTodoState =
-  | {
-      title?: string;
-      errors?: { title?: string[] };
-      messages?: string[];
-    }
-  | undefined;
+import { createTodo, type CreateTodoState } from "./action";
 
 type Props = {
   readonly userId: SessionUserId;
@@ -20,8 +12,7 @@ type Props = {
 
 export function CreateTodoForm({ userId }: Props): JSX.Element {
   const [state, action] = useActionState(
-    (_prevState: CreateTodoState, formData: FormData) =>
-      createTodo(userId, formData),
+    createTodo.bind(null, userId),
     undefined,
   );
 
