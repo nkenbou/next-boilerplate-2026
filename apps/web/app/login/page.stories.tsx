@@ -6,8 +6,7 @@ import {
   LoginBox,
   LoginForm,
 } from "./_components";
-// eslint-disable-next-line import-access/jsdoc -- Storybook
-import { MESSAGES } from "./_components/login-form-container/login-authentication-presenter";
+import { MESSAGES } from "./_components/login-form-container/login-state";
 
 const meta: Meta<typeof LoginForm> = {
   component: LoginForm,
