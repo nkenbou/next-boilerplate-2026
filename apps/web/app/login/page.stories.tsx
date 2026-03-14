@@ -1,14 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { fn } from "storybook/test";
-import { LoginAuthenticationState } from "./_components";
+import {
+  Login,
+  LoginAuthenticationState,
+  LoginBox,
+  LoginForm,
+} from "./_components";
 // eslint-disable-next-line import-access/jsdoc -- Storybook
-import { Login } from "./_components/login";
-// eslint-disable-next-line import-access/jsdoc -- Storybook
-import { LoginBox } from "./_components/login-box";
-// eslint-disable-next-line import-access/jsdoc -- Storybook
-import { LoginForm } from "./_components/login-form";
-// eslint-disable-next-line import-access/jsdoc -- Storybook
-import { MESSAGES } from "./_components/login-form-container/login-authentication-presenter/login-authentication-presenter";
+import { MESSAGES } from "./_components/login-form-container/login-authentication-presenter";
 
 const meta: Meta<typeof LoginForm> = {
   component: LoginForm,

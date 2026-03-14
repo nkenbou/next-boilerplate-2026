@@ -1,8 +1,7 @@
 import { TodoDTO } from "@app/query/dto";
 import { Box, Card, Flex, Text } from "@radix-ui/themes";
 import { JSX } from "react";
-// eslint-disable-next-line import-access/jsdoc -- Internal component
-import { CompleteTodoButton } from "./complete-todo-button/complete-todo-button";
+import { CompleteTodoButton } from "./complete-todo-button";
 
 type Props = {
   readonly todos: TodoDTO[];

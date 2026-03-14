@@ -1,4 +1,6 @@
+import { PrismaClient } from "@app/db/prisma-client";
 import { describe, expect, it, jest } from "@jest/globals";
+import { UserIdDTO } from "../../dto";
 import { TodoQueryProcessorImpl } from "./todo-query-processor";
 
 describe("TodoQueryProcessor", () => {
@@ -19,8 +21,10 @@ describe("TodoQueryProcessor", () => {
         ),
       },
     };
-    const processor = new TodoQueryProcessorImpl(mockPrisma as never);
-    const todos = await processor.list("u1" as never);
+    const processor = new TodoQueryProcessorImpl(
+      mockPrisma as unknown as PrismaClient,
+    );
+    const todos = await processor.list(UserIdDTO("u1"));
     expect(todos).toHaveLength(1);
   });
 
@@ -30,8 +34,10 @@ describe("TodoQueryProcessor", () => {
         findMany: jest.fn().mockImplementation(() => Promise.resolve([])),
       },
     };
-    const processor = new TodoQueryProcessorImpl(mockPrisma as never);
-    const todos = await processor.list("u1" as never);
+    const processor = new TodoQueryProcessorImpl(
+      mockPrisma as unknown as PrismaClient,
+    );
+    const todos = await processor.list(UserIdDTO("u1"));
     expect(mockPrisma.todo.findMany).toHaveBeenCalledWith(
       expect.objectContaining({ where: { userId: "u1" } }),
     );

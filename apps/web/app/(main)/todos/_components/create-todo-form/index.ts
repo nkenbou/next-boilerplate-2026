@@ -1,2 +1,1 @@
-export { TodoList } from "./todo-list";
 export { CreateTodoForm } from "./create-todo-form";

@@ -3,10 +3,11 @@ import { type Logger, LoggerMock } from "@app/infrastructure/logger";
 import { inject, injectable } from "tsyringe";
 import {
   TodoCreatedAtDTO,
-  TodoDescriptionDTO,
   TodoDTO,
+  TodoDescriptionDTO,
   TodoDueDateDTO,
   TodoIdDTO,
+  TodoStatusDTO,
   TodoTitleDTO,
   UserIdDTO,
 } from "../../dto";
@@ -37,7 +38,7 @@ export class TodoQueryProcessorImpl implements TodoQueryProcessor {
       TodoDTO({
         id: TodoIdDTO(t.todoId),
         title: TodoTitleDTO(t.title),
-        status: t.status as "pending" | "completed",
+        status: TodoStatusDTO(t.status),
         createdAt: TodoCreatedAtDTO(t.createdAt),
         dueDate: TodoDueDateDTO(t.dueDate),
         userId: UserIdDTO(t.userId),

@@ -1,3 +1,10 @@
+import {
+  Todo,
+  TodoDescription,
+  TodoId,
+  TodoTitle,
+  UserId,
+} from "@app/command-domain";
 import { describe, expect, it, vi } from "vitest";
 import { CreateTodoFormState } from "./form-state";
 
@@ -61,8 +68,14 @@ describe("CreateTodoFormState", () => {
   it("presentTodo で revalidate('/todos') を呼び、状態は undefined のまま", () => {
     const revalidate = vi.fn();
     const state = new CreateTodoFormState(undefined, revalidate);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument -- minimal Todo stub for testing presenter side-effect only
-    state.presentTodo({} as any);
+    state.presentTodo(
+      Todo.create(
+        TodoId.of("todo-1"),
+        TodoTitle.of("テストタスク"),
+        UserId.of("user-1"),
+        TodoDescription.of(""),
+      ),
+    );
     expect(revalidate).toHaveBeenCalledWith("/todos");
     expect(state.getState()).toBeUndefined();
   });

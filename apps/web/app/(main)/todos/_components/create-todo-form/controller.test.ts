@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/unbound-method -- vitest spy assertions require method references */
-import type { TodoCommandProcessor } from "@app/command-interface-adapter-if";
 import { type Mock, describe, expect, it, vi } from "vitest";
 import { createTodoController } from "./controller";
 
@@ -8,12 +6,17 @@ type PresenterMock = {
   presentValidationError: Mock;
 };
 
+type CommandMock = {
+  create: Mock;
+  complete: Mock;
+};
+
 const makePresenter = (): PresenterMock => ({
   presentFormData: vi.fn(),
   presentValidationError: vi.fn(),
 });
 
-const makeCommand = (): TodoCommandProcessor => ({
+const makeCommand = (): CommandMock => ({
   create: vi.fn().mockResolvedValue(undefined),
   complete: vi.fn().mockResolvedValue(undefined),
 });
@@ -97,4 +100,3 @@ describe("createTodoController", () => {
     expect(command.create).toHaveBeenCalledOnce();
   });
 });
-/* eslint-enable @typescript-eslint/unbound-method -- re-enable after test file */

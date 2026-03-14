@@ -35,7 +35,13 @@ export function TodoTitleDTO(value: string): TodoTitleDTO {
   return value as TodoTitleDTO;
 }
 
-export type TodoStatusDTO = "pending" | "completed";
+export type TodoStatusDTO = ("pending" | "completed") & Brand<"TodoStatus">;
+export function TodoStatusDTO(value: string): TodoStatusDTO {
+  if (value !== "pending" && value !== "completed") {
+    throw new Error(`Invalid TodoStatus: "${value}"`);
+  }
+  return value as TodoStatusDTO;
+}
 
 export type TodoDescriptionDTO = string & Brand<"TodoDescription">;
 export function TodoDescriptionDTO(value: string): TodoDescriptionDTO {
