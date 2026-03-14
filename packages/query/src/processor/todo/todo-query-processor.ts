@@ -1,7 +1,15 @@
 import { type PrismaClient } from "@app/db/prisma-client";
 import { type Logger, LoggerMock } from "@app/infrastructure/logger";
 import { inject, injectable } from "tsyringe";
-import { TodoDTO, TodoIdDTO, TodoTitleDTO, UserIdDTO } from "../../dto";
+import {
+  TodoCreatedAtDTO,
+  TodoDescriptionDTO,
+  TodoDTO,
+  TodoDueDateDTO,
+  TodoIdDTO,
+  TodoTitleDTO,
+  UserIdDTO,
+} from "../../dto";
 
 export interface TodoQueryProcessor {
   list(userId: UserIdDTO): Promise<TodoDTO[]>;
@@ -30,10 +38,10 @@ export class TodoQueryProcessorImpl implements TodoQueryProcessor {
         id: TodoIdDTO(t.todoId),
         title: TodoTitleDTO(t.title),
         status: t.status as "pending" | "completed",
-        createdAt: t.createdAt,
-        dueDate: t.dueDate,
+        createdAt: TodoCreatedAtDTO(t.createdAt),
+        dueDate: TodoDueDateDTO(t.dueDate),
         userId: UserIdDTO(t.userId),
-        description: t.description,
+        description: TodoDescriptionDTO(t.description),
       }),
     );
   }
