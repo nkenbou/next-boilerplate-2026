@@ -35,7 +35,7 @@ export class TodoCommandProcessorImpl implements TodoCommandProcessor {
     userId: UserId,
     title: TodoTitle,
     description: TodoDescription,
-    dueDate?: Date,
+    dueDate?: DueDate,
   ): Promise<void> {
     this.logger.info("start");
 
@@ -45,7 +45,7 @@ export class TodoCommandProcessorImpl implements TodoCommandProcessor {
         title,
         userId,
         description,
-        dueDate ? DueDate.of(dueDate) : undefined,
+        dueDate,
       );
 
       await this.todoRepository.store(todo);

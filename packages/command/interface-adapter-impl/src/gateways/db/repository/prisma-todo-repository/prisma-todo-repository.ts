@@ -23,7 +23,7 @@ export class PrismaTodoRepository implements TodoRepository {
         title: todo.title.value,
         description: todo.description.value,
         status: todo.status.value,
-        dueDate: todo.dueDate?.value ?? null,
+        dueDate: todo.dueDate.toDTO(),
       },
       create: {
         todoId: todo.id.value,
@@ -31,7 +31,7 @@ export class PrismaTodoRepository implements TodoRepository {
         description: todo.description.value,
         status: todo.status.value,
         createdAt: todo.createdAt,
-        dueDate: todo.dueDate?.value ?? null,
+        dueDate: todo.dueDate.toDTO(),
         userId: todo.userId.value,
       },
     });
@@ -61,7 +61,7 @@ export class PrismaTodoRepository implements TodoRepository {
       record.createdAt,
       UserId.of(record.userId),
       TodoDescription.of(record.description),
-      record.dueDate ? DueDate.of(record.dueDate) : null,
+      DueDate.of(record.dueDate),
     );
   }
 }

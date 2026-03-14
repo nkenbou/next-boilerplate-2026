@@ -1,4 +1,5 @@
 import {
+  DueDate,
   TodoDescription,
   TodoId,
   TodoTitle,
@@ -10,7 +11,7 @@ export interface TodoCommandProcessor {
     userId: UserId,
     title: TodoTitle,
     description: TodoDescription,
-    dueDate?: Date,
+    dueDate?: DueDate,
   ): Promise<void>;
   complete(todoId: TodoId): Promise<void>;
 }

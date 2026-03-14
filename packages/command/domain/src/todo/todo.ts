@@ -20,7 +20,7 @@ export class Todo {
     public readonly createdAt: Date,
     public readonly userId: UserId,
     public readonly description: TodoDescription,
-    public readonly dueDate: DueDate | null,
+    public readonly dueDate: DueDate,
   ) {}
 
   complete(): Todo {
@@ -55,7 +55,7 @@ export class Todo {
       title: this.title.value,
       status: this.status.value,
       createdAt: this.createdAt,
-      dueDate: this.dueDate?.value ?? null,
+      dueDate: this.dueDate.toDTO(),
       userId: this.userId.value,
       description: this.description.value,
     };
@@ -75,7 +75,7 @@ export class Todo {
       new Date(),
       userId,
       description,
-      dueDate ?? null,
+      dueDate ?? DueDate.of(),
     );
   }
 
@@ -86,7 +86,7 @@ export class Todo {
     createdAt: Date,
     userId: UserId,
     description: TodoDescription,
-    dueDate: DueDate | null,
+    dueDate: DueDate,
   ): Todo {
     return new Todo(id, title, status, createdAt, userId, description, dueDate);
   }
