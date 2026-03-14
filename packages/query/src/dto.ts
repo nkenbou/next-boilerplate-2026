@@ -44,6 +44,7 @@ type TodoDTOValue = {
   readonly createdAt: Date;
   readonly dueDate: Date | null;
   readonly userId: UserIdDTO;
+  readonly description: string;
 };
 export type TodoDTO = TodoDTOValue & Brand<"Todo">;
 export function TodoDTO(value: TodoDTOValue): TodoDTO {

@@ -27,12 +27,16 @@ exports[`/todos >  1`] = `
             <div
               class="rt-Flex rt-r-ai-center rt-r-jc-space-between"
             >
-              <span
-                class="rt-Text"
-                style="text-decoration: none; color: inherit;"
+              <div
+                class="rt-Box"
               >
-                タスク1
-              </span>
+                <span
+                  class="rt-Text"
+                  style="text-decoration: none; color: inherit;"
+                >
+                  タスク1
+                </span>
+              </div>
               <form
                 action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
               >
@@ -52,12 +56,16 @@ exports[`/todos >  1`] = `
             <div
               class="rt-Flex rt-r-ai-center rt-r-jc-space-between"
             >
-              <span
-                class="rt-Text"
-                style="text-decoration: line-through; color: var(--gray-9);"
+              <div
+                class="rt-Box"
               >
-                タスク2
-              </span>
+                <span
+                  class="rt-Text"
+                  style="text-decoration: line-through; color: var(--gray-9);"
+                >
+                  タスク2
+                </span>
+              </div>
             </div>
           </div>
         </div>

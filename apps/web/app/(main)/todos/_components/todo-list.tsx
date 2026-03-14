@@ -22,16 +22,23 @@ export function TodoList({ todos }: Props): JSX.Element {
       {todos.map((todo) => (
         <Card key={todo.id}>
           <Flex align="center" justify="between">
-            <Text
-              style={{
-                textDecoration:
-                  todo.status === "completed" ? "line-through" : "none",
-                color:
-                  todo.status === "completed" ? "var(--gray-9)" : "inherit",
-              }}
-            >
-              {todo.title}
-            </Text>
+            <Box>
+              <Text
+                style={{
+                  textDecoration:
+                    todo.status === "completed" ? "line-through" : "none",
+                  color:
+                    todo.status === "completed" ? "var(--gray-9)" : "inherit",
+                }}
+              >
+                {todo.title}
+              </Text>
+              {todo.description && (
+                <Text as="p" size="1" color="gray">
+                  {todo.description}
+                </Text>
+              )}
+            </Box>
             {todo.status === "pending" && (
               <CompleteTodoButton todoId={todo.id} />
             )}

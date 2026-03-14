@@ -26,13 +26,14 @@ model User {
 }
 
 model Todo {
-  todoId    String    @id @default(uuid()) @map("todo_id")
-  title     String
-  status    String    @default("pending")
-  createdAt DateTime  @default(now()) @map("created_at")
-  dueDate   DateTime? @map("due_date")
-  userId    String    @map("user_id")
-  user      User      @relation(fields: [userId], references: [userId])
+  todoId      String    @id @default(uuid()) @map("todo_id")
+  title       String
+  description String    @default("")
+  status      String    @default("pending")
+  createdAt   DateTime  @default(now()) @map("created_at")
+  dueDate     DateTime? @map("due_date")
+  userId      String    @map("user_id")
+  user        User      @relation(fields: [userId], references: [userId])
 
   @@map("todos")
 }

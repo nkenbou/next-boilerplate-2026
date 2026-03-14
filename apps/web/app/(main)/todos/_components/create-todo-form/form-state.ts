@@ -1,19 +1,18 @@
 import type { Todo } from "@app/command-domain";
 import type { TodoPresenter } from "@app/command-interface-adapter-if";
-import type { CreateTodoFormPresenter } from "./controller";
+import type { CreateTodoFormPresenter, TodoFormErrorType } from "./controller";
 
-const TITLE_MESSAGES: Record<
-  "INVALID_TODO_TITLE_EMPTY" | "INVALID_TODO_TITLE_TOO_LONG",
-  string
-> = {
+const MESSAGES: Record<TodoFormErrorType, string> = {
   INVALID_TODO_TITLE_EMPTY: "タイトルを入力してください。",
   INVALID_TODO_TITLE_TOO_LONG: "タイトルは200文字以内にしてください。",
+  INVALID_TODO_DESCRIPTION_TOO_LONG: "説明は500文字以内にしてください。",
 };
 
 export type CreateTodoState =
   | {
       title?: string;
-      errors?: { title?: string[] };
+      description?: string;
+      errors?: { title?: string[]; description?: string[] };
       messages?: string[];
     }
   | undefined;
@@ -31,15 +30,18 @@ export class CreateTodoFormState
   }
 
   // CreateTodoFormPresenter — called by controller
-  presentFormData(title: string): void {
-    this.state = { title };
+  presentFormData(fields: { title: string; description: string }): void {
+    this.state = { ...fields };
   }
 
   presentValidationError(
-    title: string,
-    errorType: "INVALID_TODO_TITLE_EMPTY" | "INVALID_TODO_TITLE_TOO_LONG",
+    field: "title" | "description",
+    errorType: TodoFormErrorType,
   ): void {
-    this.state = { title, errors: { title: [TITLE_MESSAGES[errorType]] } };
+    this.state = {
+      ...this.state,
+      errors: { ...this.state?.errors, [field]: [MESSAGES[errorType]] },
+    };
   }
 
   // TodoPresenter — called by command processor

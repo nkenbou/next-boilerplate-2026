@@ -1,6 +1,7 @@
 import { DomainError } from "../domain-error";
 import { UserId } from "../user";
 import { DueDate } from "./due-date";
+import { TodoDescription } from "./todo-description";
 import { TodoId } from "./todo-id";
 import { TodoStatus } from "./todo-status";
 import { TodoTitle } from "./todo-title";
@@ -18,6 +19,7 @@ export class Todo {
     public readonly status: TodoStatus,
     public readonly createdAt: Date,
     public readonly userId: UserId,
+    public readonly description: TodoDescription,
     public readonly dueDate: DueDate | null,
   ) {}
 
@@ -34,6 +36,7 @@ export class Todo {
       TodoStatus.completed(),
       this.createdAt,
       this.userId,
+      this.description,
       this.dueDate,
     );
   }
@@ -45,6 +48,7 @@ export class Todo {
     createdAt: Date;
     dueDate: Date | null;
     userId: string;
+    description: string;
   } {
     return {
       id: this.id.value,
@@ -53,6 +57,7 @@ export class Todo {
       createdAt: this.createdAt,
       dueDate: this.dueDate?.value ?? null,
       userId: this.userId.value,
+      description: this.description.value,
     };
   }
 
@@ -60,6 +65,7 @@ export class Todo {
     id: TodoId,
     title: TodoTitle,
     userId: UserId,
+    description: TodoDescription,
     dueDate?: DueDate,
   ): Todo {
     return new Todo(
@@ -68,6 +74,7 @@ export class Todo {
       TodoStatus.pending(),
       new Date(),
       userId,
+      description,
       dueDate ?? null,
     );
   }
@@ -78,8 +85,9 @@ export class Todo {
     status: TodoStatus,
     createdAt: Date,
     userId: UserId,
+    description: TodoDescription,
     dueDate: DueDate | null,
   ): Todo {
-    return new Todo(id, title, status, createdAt, userId, dueDate);
+    return new Todo(id, title, status, createdAt, userId, description, dueDate);
   }
 }

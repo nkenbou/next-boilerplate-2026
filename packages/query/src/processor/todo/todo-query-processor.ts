@@ -33,6 +33,7 @@ export class TodoQueryProcessorImpl implements TodoQueryProcessor {
         createdAt: t.createdAt,
         dueDate: t.dueDate,
         userId: UserIdDTO(t.userId),
+        description: t.description,
       }),
     );
   }

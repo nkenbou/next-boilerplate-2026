@@ -2,6 +2,7 @@ import {
   DomainError,
   DueDate,
   Todo,
+  TodoDescription,
   TodoId,
   TodoTitle,
   UserId,
@@ -33,6 +34,7 @@ export class TodoCommandProcessorImpl implements TodoCommandProcessor {
   async create(
     userId: UserId,
     title: TodoTitle,
+    description: TodoDescription,
     dueDate?: Date,
   ): Promise<void> {
     this.logger.info("start");
@@ -42,6 +44,7 @@ export class TodoCommandProcessorImpl implements TodoCommandProcessor {
         TodoId.of(generateId()),
         title,
         userId,
+        description,
         dueDate ? DueDate.of(dueDate) : undefined,
       );
 

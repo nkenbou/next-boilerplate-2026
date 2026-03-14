@@ -11,6 +11,7 @@ const sampleTodos: TodoDTO[] = [
     createdAt: new Date("2024-01-01"),
     dueDate: null,
     userId: UserIdDTO("user-1"),
+    description: "",
   }),
   TodoDTO({
     id: TodoIdDTO("todo-2"),
@@ -19,6 +20,7 @@ const sampleTodos: TodoDTO[] = [
     createdAt: new Date("2024-01-02"),
     dueDate: null,
     userId: UserIdDTO("user-1"),
+    description: "",
   }),
 ];
 

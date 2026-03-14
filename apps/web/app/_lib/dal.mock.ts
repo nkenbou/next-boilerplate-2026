@@ -26,5 +26,6 @@ export const getTodos: GetTodos = fn().mockResolvedValue([
     createdAt: new Date("2024-01-01"),
     dueDate: null,
     userId: UserIdDTO("mock-user-id"),
+    description: "",
   }),
 ]);

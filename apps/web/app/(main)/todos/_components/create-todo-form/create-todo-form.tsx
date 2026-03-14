@@ -1,10 +1,10 @@
 "use client";
 
-import { Box, Button, Flex, TextField } from "@radix-ui/themes";
+import { Box, Button, Flex, TextArea, TextField } from "@radix-ui/themes";
 import { type JSX, useActionState } from "react";
 import { ErrorMessagePanel } from "#components/message-panel";
 import { SessionUserId } from "#lib/session-types";
-import { createTodo, type CreateTodoState } from "./action";
+import { createTodo } from "./action";
 
 type Props = {
   readonly userId: SessionUserId;
@@ -19,18 +19,25 @@ export function CreateTodoForm({ userId }: Props): JSX.Element {
   return (
     <Box>
       <form action={action}>
-        <Flex gap="2">
+        <Flex direction="column" gap="2">
           <TextField.Root
             name="title"
             placeholder="新しいタスクを入力..."
             defaultValue={state?.title}
-            style={{ flex: 1 }}
           />
+          {state?.errors?.title && (
+            <ErrorMessagePanel messages={state.errors.title} />
+          )}
+          <TextArea
+            name="description"
+            placeholder="説明（任意）"
+            defaultValue={state?.description}
+          />
+          {state?.errors?.description && (
+            <ErrorMessagePanel messages={state.errors.description} />
+          )}
           <Button type="submit">追加</Button>
         </Flex>
-        {state?.errors?.title && (
-          <ErrorMessagePanel messages={state.errors.title} />
-        )}
         {state?.messages && <ErrorMessagePanel messages={state.messages} />}
       </form>
     </Box>
