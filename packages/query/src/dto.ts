@@ -35,15 +35,37 @@ export function TodoTitleDTO(value: string): TodoTitleDTO {
   return value as TodoTitleDTO;
 }
 
-export type TodoStatusDTO = "pending" | "completed";
+export type TodoStatusDTO = ("pending" | "completed") & Brand<"TodoStatus">;
+export function TodoStatusDTO(value: string): TodoStatusDTO {
+  if (value !== "pending" && value !== "completed") {
+    throw new Error(`Invalid TodoStatus: "${value}"`);
+  }
+  return value as TodoStatusDTO;
+}
+
+export type TodoDescriptionDTO = string & Brand<"TodoDescription">;
+export function TodoDescriptionDTO(value: string): TodoDescriptionDTO {
+  return value as TodoDescriptionDTO;
+}
+
+export type TodoCreatedAtDTO = Date & Brand<"TodoCreatedAt">;
+export function TodoCreatedAtDTO(value: Date): TodoCreatedAtDTO {
+  return value as TodoCreatedAtDTO;
+}
+
+export type TodoDueDateDTO = (Date & Brand<"TodoDueDate">) | null;
+export function TodoDueDateDTO(value: Date | null): TodoDueDateDTO {
+  return value as TodoDueDateDTO;
+}
 
 type TodoDTOValue = {
   readonly id: TodoIdDTO;
   readonly title: TodoTitleDTO;
   readonly status: TodoStatusDTO;
-  readonly createdAt: Date;
-  readonly dueDate: Date | null;
+  readonly createdAt: TodoCreatedAtDTO;
+  readonly dueDate: TodoDueDateDTO;
   readonly userId: UserIdDTO;
+  readonly description: TodoDescriptionDTO;
 };
 export type TodoDTO = TodoDTOValue & Brand<"Todo">;
 export function TodoDTO(value: TodoDTOValue): TodoDTO {

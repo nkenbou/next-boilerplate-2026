@@ -1,7 +1,6 @@
 import { composeStories } from "@storybook/nextjs-vite";
 import { render, screen } from "@testing-library/react";
-// eslint-disable-next-line import-access/jsdoc -- Storybook test
-import { MESSAGES } from "./_components/login-form-container/login-authentication-presenter/login-authentication-presenter";
+import { MESSAGES } from "./_components/login-form-container/login-state";
 import * as stories from "./page.stories";
 
 const { Default, UsernameError, PasswordError, LoginError } =

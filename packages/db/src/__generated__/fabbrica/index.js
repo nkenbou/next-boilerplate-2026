@@ -20,6 +20,7 @@ const modelFieldDefinitions = [{
     }];
 function autoGenerateUserScalarsOrEnums({ seq }) {
     return {
+        userId: getScalarFieldValueGenerator().String({ modelName: "User", fieldName: "userId", isId: true, isUnique: false, seq }),
         username: getScalarFieldValueGenerator().String({ modelName: "User", fieldName: "username", isId: false, isUnique: true, seq }),
         password: getScalarFieldValueGenerator().String({ modelName: "User", fieldName: "password", isId: false, isUnique: false, seq }),
         displayName: getScalarFieldValueGenerator().String({ modelName: "User", fieldName: "displayName", isId: false, isUnique: false, seq })
@@ -111,7 +112,11 @@ function isTodouserFactory(x) {
 }
 function autoGenerateTodoScalarsOrEnums({ seq }) {
     return {
-        title: getScalarFieldValueGenerator().String({ modelName: "Todo", fieldName: "title", isId: false, isUnique: false, seq })
+        todoId: getScalarFieldValueGenerator().String({ modelName: "Todo", fieldName: "todoId", isId: true, isUnique: false, seq }),
+        title: getScalarFieldValueGenerator().String({ modelName: "Todo", fieldName: "title", isId: false, isUnique: false, seq }),
+        description: getScalarFieldValueGenerator().String({ modelName: "Todo", fieldName: "description", isId: false, isUnique: false, seq }),
+        status: getScalarFieldValueGenerator().String({ modelName: "Todo", fieldName: "status", isId: false, isUnique: false, seq }),
+        createdAt: getScalarFieldValueGenerator().DateTime({ modelName: "Todo", fieldName: "createdAt", isId: false, isUnique: false, seq })
     };
 }
 function defineTodoFactoryInternal({ defaultData: defaultDataResolver, onAfterBuild, onBeforeCreate, onAfterCreate, traits: traitsDefs = {} }, defaultTransientFieldValues) {

@@ -64,6 +64,7 @@ type TodouserFactory = {
 type TodoFactoryDefineInput = {
     todoId?: string;
     title?: string;
+    description?: string;
     status?: string;
     createdAt?: Date;
     dueDate?: Date | null;

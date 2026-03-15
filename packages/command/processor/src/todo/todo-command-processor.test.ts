@@ -1,4 +1,10 @@
-import { Todo, TodoId, TodoTitle, UserId } from "@app/command-domain";
+import {
+  Todo,
+  TodoDescription,
+  TodoId,
+  TodoTitle,
+  UserId,
+} from "@app/command-domain";
 import {
   TodoPresenterMock,
   TodoRepositoryMock,
@@ -15,6 +21,7 @@ describe("TodoCommandProcessor", () => {
       await processor.create(
         UserId.of("user-id-1"),
         TodoTitle.of("新しいタスク"),
+        TodoDescription.of(""),
       );
 
       expect(presenter.todo?.title.value).toBe("新しいタスク");
@@ -35,6 +42,7 @@ describe("TodoCommandProcessor", () => {
         TodoId.of("todo-id-1"),
         TodoTitle.of("Test"),
         UserId.of("user-id-1"),
+        TodoDescription.of(""),
       );
       await todoRepository.store(todo);
 

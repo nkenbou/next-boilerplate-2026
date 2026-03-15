@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-// eslint-disable-next-line import-access/jsdoc -- Storybook
-import { Top } from "./_components/top";
+import { Top } from "./_components";
 
 const meta: Meta<typeof Top> = {
   component: Top,

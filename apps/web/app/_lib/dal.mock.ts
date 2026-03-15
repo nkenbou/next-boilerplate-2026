@@ -1,7 +1,11 @@
 import {
   DisplayNameDTO,
+  TodoCreatedAtDTO,
   TodoDTO,
+  TodoDescriptionDTO,
+  TodoDueDateDTO,
   TodoIdDTO,
+  TodoStatusDTO,
   TodoTitleDTO,
   UserDTO,
   UserIdDTO,
@@ -22,9 +26,10 @@ export const getTodos: GetTodos = fn().mockResolvedValue([
   TodoDTO({
     id: TodoIdDTO("todo-id-1"),
     title: TodoTitleDTO("Sample Todo"),
-    status: "pending",
-    createdAt: new Date("2024-01-01"),
-    dueDate: null,
+    status: TodoStatusDTO("pending"),
+    createdAt: TodoCreatedAtDTO(new Date("2024-01-01")),
+    dueDate: TodoDueDateDTO(null),
     userId: UserIdDTO("mock-user-id"),
+    description: TodoDescriptionDTO(""),
   }),
 ]);

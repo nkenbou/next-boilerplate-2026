@@ -27,12 +27,16 @@ exports[`/todos >  1`] = `
             <div
               class="rt-Flex rt-r-ai-center rt-r-jc-space-between"
             >
-              <span
-                class="rt-Text"
-                style="text-decoration: none; color: inherit;"
+              <div
+                class="rt-Box"
               >
-                タスク1
-              </span>
+                <span
+                  class="rt-Text"
+                  style="text-decoration: none; color: inherit;"
+                >
+                  pending / description なし / dueDate なし
+                </span>
+              </div>
               <form
                 action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
               >
@@ -52,12 +56,209 @@ exports[`/todos >  1`] = `
             <div
               class="rt-Flex rt-r-ai-center rt-r-jc-space-between"
             >
-              <span
-                class="rt-Text"
-                style="text-decoration: line-through; color: var(--gray-9);"
+              <div
+                class="rt-Box"
               >
-                タスク2
-              </span>
+                <span
+                  class="rt-Text"
+                  style="text-decoration: none; color: inherit;"
+                >
+                  pending / description あり / dueDate なし
+                </span>
+                <p
+                  class="rt-Text rt-r-size-1"
+                  data-accent-color="gray"
+                >
+                  これはサンプルの説明文です。
+                </p>
+              </div>
+              <form
+                action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
+              >
+                <button
+                  class="rt-reset rt-BaseButton rt-r-size-1 rt-variant-soft rt-Button"
+                  data-accent-color=""
+                  type="submit"
+                >
+                  完了
+                </button>
+              </form>
+            </div>
+          </div>
+          <div
+            class="rt-reset rt-BaseCard rt-Card rt-r-size-1 rt-variant-surface"
+          >
+            <div
+              class="rt-Flex rt-r-ai-center rt-r-jc-space-between"
+            >
+              <div
+                class="rt-Box"
+              >
+                <span
+                  class="rt-Text"
+                  style="text-decoration: none; color: inherit;"
+                >
+                  pending / description なし / dueDate あり
+                </span>
+                <p
+                  class="rt-Text rt-r-size-1"
+                  data-accent-color="gray"
+                >
+                  期限: 
+                  2024/3/31
+                </p>
+              </div>
+              <form
+                action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
+              >
+                <button
+                  class="rt-reset rt-BaseButton rt-r-size-1 rt-variant-soft rt-Button"
+                  data-accent-color=""
+                  type="submit"
+                >
+                  完了
+                </button>
+              </form>
+            </div>
+          </div>
+          <div
+            class="rt-reset rt-BaseCard rt-Card rt-r-size-1 rt-variant-surface"
+          >
+            <div
+              class="rt-Flex rt-r-ai-center rt-r-jc-space-between"
+            >
+              <div
+                class="rt-Box"
+              >
+                <span
+                  class="rt-Text"
+                  style="text-decoration: none; color: inherit;"
+                >
+                  pending / description あり / dueDate あり
+                </span>
+                <p
+                  class="rt-Text rt-r-size-1"
+                  data-accent-color="gray"
+                >
+                  これはサンプルの説明文です。
+                </p>
+                <p
+                  class="rt-Text rt-r-size-1"
+                  data-accent-color="gray"
+                >
+                  期限: 
+                  2024/3/31
+                </p>
+              </div>
+              <form
+                action="javascript:throw new Error('A React form was unexpectedly submitted. If you called form.submit() manually, consider using form.requestSubmit() instead. If you\\'re trying to use event.stopPropagation() in a submit event handler, consider also calling event.preventDefault().')"
+              >
+                <button
+                  class="rt-reset rt-BaseButton rt-r-size-1 rt-variant-soft rt-Button"
+                  data-accent-color=""
+                  type="submit"
+                >
+                  完了
+                </button>
+              </form>
+            </div>
+          </div>
+          <div
+            class="rt-reset rt-BaseCard rt-Card rt-r-size-1 rt-variant-surface"
+          >
+            <div
+              class="rt-Flex rt-r-ai-center rt-r-jc-space-between"
+            >
+              <div
+                class="rt-Box"
+              >
+                <span
+                  class="rt-Text"
+                  style="text-decoration: line-through; color: var(--gray-9);"
+                >
+                  completed / description なし / dueDate なし
+                </span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rt-reset rt-BaseCard rt-Card rt-r-size-1 rt-variant-surface"
+          >
+            <div
+              class="rt-Flex rt-r-ai-center rt-r-jc-space-between"
+            >
+              <div
+                class="rt-Box"
+              >
+                <span
+                  class="rt-Text"
+                  style="text-decoration: line-through; color: var(--gray-9);"
+                >
+                  completed / description あり / dueDate なし
+                </span>
+                <p
+                  class="rt-Text rt-r-size-1"
+                  data-accent-color="gray"
+                >
+                  これはサンプルの説明文です。
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rt-reset rt-BaseCard rt-Card rt-r-size-1 rt-variant-surface"
+          >
+            <div
+              class="rt-Flex rt-r-ai-center rt-r-jc-space-between"
+            >
+              <div
+                class="rt-Box"
+              >
+                <span
+                  class="rt-Text"
+                  style="text-decoration: line-through; color: var(--gray-9);"
+                >
+                  completed / description なし / dueDate あり
+                </span>
+                <p
+                  class="rt-Text rt-r-size-1"
+                  data-accent-color="gray"
+                >
+                  期限: 
+                  2024/3/31
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="rt-reset rt-BaseCard rt-Card rt-r-size-1 rt-variant-surface"
+          >
+            <div
+              class="rt-Flex rt-r-ai-center rt-r-jc-space-between"
+            >
+              <div
+                class="rt-Box"
+              >
+                <span
+                  class="rt-Text"
+                  style="text-decoration: line-through; color: var(--gray-9);"
+                >
+                  completed / description あり / dueDate あり
+                </span>
+                <p
+                  class="rt-Text rt-r-size-1"
+                  data-accent-color="gray"
+                >
+                  これはサンプルの説明文です。
+                </p>
+                <p
+                  class="rt-Text rt-r-size-1"
+                  data-accent-color="gray"
+                >
+                  期限: 
+                  2024/3/31
+                </p>
+              </div>
             </div>
           </div>
         </div>

@@ -1,6 +1,8 @@
 import { DomainError } from "../domain-error";
 import { UserId } from "../user";
+import { CreatedAt } from "./created-at";
 import { DueDate } from "./due-date";
+import { TodoDescription } from "./todo-description";
 import { TodoId } from "./todo-id";
 import { TodoStatus } from "./todo-status";
 import { TodoTitle } from "./todo-title";
@@ -16,9 +18,10 @@ export class Todo {
     public readonly id: TodoId,
     public readonly title: TodoTitle,
     public readonly status: TodoStatus,
-    public readonly createdAt: Date,
+    public readonly createdAt: CreatedAt,
     public readonly userId: UserId,
-    public readonly dueDate: DueDate | null,
+    public readonly description: TodoDescription,
+    public readonly dueDate: DueDate,
   ) {}
 
   complete(): Todo {
@@ -34,6 +37,7 @@ export class Todo {
       TodoStatus.completed(),
       this.createdAt,
       this.userId,
+      this.description,
       this.dueDate,
     );
   }
@@ -45,14 +49,16 @@ export class Todo {
     createdAt: Date;
     dueDate: Date | null;
     userId: string;
+    description: string;
   } {
     return {
-      id: this.id.value,
-      title: this.title.value,
-      status: this.status.value,
-      createdAt: this.createdAt,
-      dueDate: this.dueDate?.value ?? null,
-      userId: this.userId.value,
+      id: this.id.toDTO(),
+      title: this.title.toDTO(),
+      status: this.status.toDTO(),
+      createdAt: this.createdAt.toDTO(),
+      dueDate: this.dueDate.toDTO(),
+      userId: this.userId.toDTO(),
+      description: this.description.toDTO(),
     };
   }
 
@@ -60,15 +66,17 @@ export class Todo {
     id: TodoId,
     title: TodoTitle,
     userId: UserId,
+    description: TodoDescription,
     dueDate?: DueDate,
   ): Todo {
     return new Todo(
       id,
       title,
       TodoStatus.pending(),
-      new Date(),
+      CreatedAt.now(),
       userId,
-      dueDate ?? null,
+      description,
+      dueDate ?? DueDate.of(),
     );
   }
 
@@ -76,10 +84,11 @@ export class Todo {
     id: TodoId,
     title: TodoTitle,
     status: TodoStatus,
-    createdAt: Date,
+    createdAt: CreatedAt,
     userId: UserId,
-    dueDate: DueDate | null,
+    description: TodoDescription,
+    dueDate: DueDate,
   ): Todo {
-    return new Todo(id, title, status, createdAt, userId, dueDate);
+    return new Todo(id, title, status, createdAt, userId, description, dueDate);
   }
 }

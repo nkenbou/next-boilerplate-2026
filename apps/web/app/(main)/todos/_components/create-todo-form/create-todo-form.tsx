@@ -1,45 +1,41 @@
 "use client";
 
-import { Box, Button, Flex, TextField } from "@radix-ui/themes";
-import { type JSX, useActionState } from "react";
+import { Box, Button, Flex, TextArea, TextField } from "@radix-ui/themes";
+import { type JSX } from "react";
 import { ErrorMessagePanel } from "#components/message-panel";
-import { SessionUserId } from "#lib/session-types";
-import { createTodo } from "./action";
-
-type CreateTodoState =
-  | {
-      title?: string;
-      errors?: { title?: string[] };
-      messages?: string[];
-    }
-  | undefined;
+import { type CreateTodoState } from "./form-state";
 
 type Props = {
-  readonly userId: SessionUserId;
+  readonly state?: CreateTodoState;
+  readonly createTodoAction: (formData: FormData) => void;
 };
 
-export function CreateTodoForm({ userId }: Props): JSX.Element {
-  const [state, action] = useActionState(
-    (_prevState: CreateTodoState, formData: FormData) =>
-      createTodo(userId, formData),
-    undefined,
-  );
-
+export function CreateTodoForm({
+  state,
+  createTodoAction,
+}: Props): JSX.Element {
   return (
     <Box>
-      <form action={action}>
-        <Flex gap="2">
+      <form action={createTodoAction}>
+        <Flex direction="column" gap="2">
           <TextField.Root
             name="title"
             placeholder="新しいタスクを入力..."
             defaultValue={state?.title}
-            style={{ flex: 1 }}
           />
+          {state?.errors?.title && (
+            <ErrorMessagePanel messages={state.errors.title} />
+          )}
+          <TextArea
+            name="description"
+            placeholder="説明（任意）"
+            defaultValue={state?.description}
+          />
+          {state?.errors?.description && (
+            <ErrorMessagePanel messages={state.errors.description} />
+          )}
           <Button type="submit">追加</Button>
         </Flex>
-        {state?.errors?.title && (
-          <ErrorMessagePanel messages={state.errors.title} />
-        )}
         {state?.messages && <ErrorMessagePanel messages={state.messages} />}
       </form>
     </Box>
