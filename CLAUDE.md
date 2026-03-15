@@ -21,8 +21,14 @@ pnpm fix           # 自動修正
 
 # DB
 pnpm db:generate   # Prisma クライアント生成
-pnpm db:migrate    # マイグレーション実行
+pnpm db:migrate    # マイグレーション実行（dev/test/e2e スキーマ）
 pnpm db:seed       # シードデータ投入
+
+# E2E テスト（apps/e2e/ にて個別実行）
+pnpm e2e           # Turbo 経由で E2E テスト実行（CI: web build → start）
+pnpm --filter @app/e2e e2e        # ローカル（dev サーバーを再利用）
+pnpm --filter @app/e2e e2e:ui     # Playwright UI モード
+pnpm --filter @app/e2e e2e:report # レポート表示
 
 # Web アプリ（apps/web/ にて個別実行）
 pnpm lint:eslint    # ESLint
@@ -51,7 +57,9 @@ cd apps/web && pnpm unit
 ### パッケージ構成
 
 ```
-apps/web/                              # Next.js アプリケーション（フロントエンド + Server Actions）
+apps/
+  web/                               # Next.js アプリケーション（フロントエンド + Server Actions）
+  e2e/                               # Playwright E2E テスト（独立パッケージ）
 packages/
   command/
     domain/                            # エンティティ・値オブジェクト・ドメインロジック
@@ -94,9 +102,9 @@ packages/
 | クエリ + リポジトリ | Jest + @quramy/jest-prisma | `packages/query/`, `packages/command/interface-adapter-impl/` |
 | Web コンポーネント | Vitest | `apps/web/` |
 | Storybook VRT | Vitest + Storycap + reg-cli | `apps/web/` |
-| E2E | Playwright | `apps/web/e2e/` |
+| E2E | Playwright | `apps/e2e/` |
 
-インテグレーションテスト（`packages/query/` と `interface-adapter-impl/`）は実際の DB に接続する（モック禁止）。テスト用スキーマは `DATABASE_URL?schema=test` を使用。
+インテグレーションテスト（`packages/query/` と `interface-adapter-impl/`）は実際の DB に接続する（モック禁止）。テスト用スキーマは `DATABASE_URL?schema=test` を使用。E2E テストは `DATABASE_URL?schema=e2e` を使用。
 
 ### Path Aliases（apps/web）
 

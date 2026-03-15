@@ -5,6 +5,7 @@ export type CompleteTodoState = { messages?: string[] } | undefined;
 
 export class CompleteTodoFormState implements TodoPresenter {
   private state: CompleteTodoState;
+  private successful = false;
 
   constructor(
     prevState: CompleteTodoState = undefined,
@@ -14,14 +15,17 @@ export class CompleteTodoFormState implements TodoPresenter {
   }
 
   presentTodo(_todo: Todo): void {
-    this.revalidate("/todos");
+    this.successful = true;
   }
 
   presentAnyError(_err: unknown): void {
     this.state = { messages: ["タスクの完了に失敗しました。"] };
   }
 
-  getState(): CompleteTodoState {
+  next(): CompleteTodoState {
+    if (this.successful) {
+      this.revalidate("/todos");
+    }
     return this.state;
   }
 }

@@ -26,6 +26,7 @@ export class CreateTodoFormState
   implements TodoPresenter, CreateTodoFormPresenter
 {
   private state: CreateTodoState;
+  private successful = false;
 
   constructor(
     prevState: CreateTodoState = undefined,
@@ -51,14 +52,17 @@ export class CreateTodoFormState
 
   // TodoPresenter — called by command processor
   presentTodo(_todo: Todo): void {
-    this.revalidate("/todos");
+    this.successful = true;
   }
 
   presentAnyError(_err: unknown): void {
     this.state = { messages: [ANY_ERROR_MESSAGE] };
   }
 
-  getState(): CreateTodoState {
+  next(): CreateTodoState {
+    if (this.successful) {
+      this.revalidate("/todos");
+    }
     return this.state;
   }
 }

@@ -75,14 +75,11 @@ export class LoginFormState
     this.state = { messages: ["想定外のエラーが発生しました。"] };
   }
 
-  async commit(): Promise<void> {
+  async next(): Promise<LoginAuthenticationState> {
     if (this.pendingSession !== null) {
       await this.pendingSession;
       this.redirect("/");
     }
-  }
-
-  getState(): LoginAuthenticationState {
     return this.state;
   }
 }

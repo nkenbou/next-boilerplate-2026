@@ -1,0 +1,7 @@
+{
+  "extends": "@app/typescript-config/base.json",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "include": ["fixtures/**/*.ts", "page-objects/**/*.ts", "tests/**/*.ts", "playwright.config.ts"]
+}

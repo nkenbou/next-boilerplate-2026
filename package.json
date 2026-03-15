@@ -13,7 +13,8 @@
     "db:migrate": "turbo run db:migrate",
     "db:deploy": "turbo run db:deploy",
     "db:push": "turbo run db:push",
-    "db:seed": "turbo run db:seed"
+    "db:seed": "turbo run db:seed",
+    "e2e": "turbo run e2e"
   },
   "devDependencies": {
     "@app/eslint-config": "workspace:*",

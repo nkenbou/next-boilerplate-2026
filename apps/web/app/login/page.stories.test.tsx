@@ -1,6 +1,6 @@
 import { composeStories } from "@storybook/nextjs-vite";
 import { render, screen } from "@testing-library/react";
-import { MESSAGES } from "./_components/login-form-container/login-state";
+import { MESSAGES } from "./_components/login-form-container/login-form-state";
 import * as stories from "./page.stories";
 
 const { Default, UsernameError, PasswordError, LoginError } =

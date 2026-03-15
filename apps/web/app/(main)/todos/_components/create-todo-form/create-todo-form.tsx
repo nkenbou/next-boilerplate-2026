@@ -3,7 +3,7 @@
 import { Box, Button, Flex, TextArea, TextField } from "@radix-ui/themes";
 import { type JSX } from "react";
 import { ErrorMessagePanel } from "#components/message-panel";
-import { type CreateTodoState } from "./form-state";
+import { type CreateTodoState } from "./create-todo-form-state";
 
 type Props = {
   readonly state?: CreateTodoState;

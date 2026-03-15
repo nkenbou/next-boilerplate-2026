@@ -30,6 +30,7 @@ USER ${USER_NAME}:${GROUP_NAME}
 
 COPY --chown=${USER_NAME}:${GROUP_NAME} package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 COPY --chown=${USER_NAME}:${GROUP_NAME} apps/web/package.json ./apps/web/
+COPY --chown=${USER_NAME}:${GROUP_NAME} apps/e2e/package.json ./apps/e2e/
 COPY --chown=${USER_NAME}:${GROUP_NAME} packages/command/domain/package.json ./packages/command/domain/
 COPY --chown=${USER_NAME}:${GROUP_NAME} packages/command/interface-adapter-if/package.json ./packages/command/interface-adapter-if/
 COPY --chown=${USER_NAME}:${GROUP_NAME} packages/command/interface-adapter-impl/package.json ./packages/command/interface-adapter-impl/
@@ -43,7 +44,7 @@ COPY --chown=${USER_NAME}:${GROUP_NAME} packages/stylelint-config/package.json .
 COPY --chown=${USER_NAME}:${GROUP_NAME} packages/typescript-config/package.json ./packages/typescript-config/
 RUN pnpm config set store-dir "${PNPM_HOME}" \
  && pnpm install --frozen-lockfile \
- && pnpm --filter web exec playwright install chromium
+ && pnpm --filter @app/e2e exec playwright install chromium
 
 COPY --chown=${USER_NAME}:${GROUP_NAME} . .
 

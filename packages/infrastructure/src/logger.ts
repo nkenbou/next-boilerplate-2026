@@ -60,19 +60,23 @@ export abstract class AbstractLogger {
   }
 
   protected createMessageText(message: unknown): string {
-    if (message == null) {
-      return "Unknown error";
-    }
-
     if (typeof message === "string") {
       return message;
     }
 
-    if (typeof message === "object" && Object.hasOwn(message, "toString")) {
+    if (message instanceof Error) {
+      return message.stack ?? message.message;
+    }
+
+    if (
+      message != null &&
+      typeof message === "object" &&
+      "toString" in message
+    ) {
       return (message as MessageLike).toString();
     }
 
-    return "Unknown error";
+    return String(message);
   }
 
   protected createMessage(logLevel: LogLevel, message: MessageLike): string {

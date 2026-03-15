@@ -6,7 +6,7 @@ import {
   LoginBox,
   LoginForm,
 } from "./_components";
-import { MESSAGES } from "./_components/login-form-container/login-state";
+import { MESSAGES } from "./_components/login-form-container/login-form-state";
 
 const meta: Meta<typeof LoginForm> = {
   component: LoginForm,
