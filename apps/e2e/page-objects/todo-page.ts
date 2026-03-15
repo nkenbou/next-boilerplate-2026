@@ -6,7 +6,7 @@ export class TodoPage {
 
   constructor(private readonly page: Page) {
     this.titleInput = page.locator('[name="title"]');
-    this.submitButton = page.locator('[type="submit"]').first();
+    this.submitButton = page.getByRole("button", { name: "追加" });
   }
 
   async goto(): Promise<void> {

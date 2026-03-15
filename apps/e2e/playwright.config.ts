@@ -21,6 +21,13 @@ if (existsSync(envFile)) {
   }
 }
 
+// Ensure DATABASE_URL always targets the e2e schema
+if (process.env.DATABASE_URL && !process.env.DATABASE_URL.includes("schema=e2e")) {
+  const url = new URL(process.env.DATABASE_URL);
+  url.searchParams.set("schema", "e2e");
+  process.env.DATABASE_URL = url.toString();
+}
+
 const isCI = Boolean(process.env.CI);
 const baseURL = process.env.BASE_URL ?? "http://localhost:3000";
 
