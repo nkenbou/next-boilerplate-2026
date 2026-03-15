@@ -11,7 +11,6 @@ import {
 } from "./create-todo-form-state";
 
 export async function createTodo(
-  userId: string,
   prevState: CreateTodoState,
   formData: FormData,
 ): Promise<CreateTodoState> {
@@ -19,6 +18,6 @@ export async function createTodo(
   const logger = SessionLogger.create(session.sessionId);
   const presenter = new CreateTodoFormState(prevState, revalidatePath);
   const command = createTodoProcessor(presenter, logger);
-  await createTodoController(userId, formData, command, presenter);
+  await createTodoController(session.userId, formData, command, presenter);
   return presenter.next();
 }
