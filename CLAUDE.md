@@ -2,128 +2,135 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## コマンド一覧
+## 概要
 
-### 開発
+pnpm + Turbo によるモノレポ構成の To-Do 管理アプリ。CQRS + DDD + Clean Architecture を採用している。
 
-```bash
-# 開発サーバー起動 (Next.js + Storybook)
-pnpm dev
-
-# ビルド
-pnpm build
-
-# テスト (lint + unit)
-pnpm test
-
-# ユニットテストのみ
-pnpm unit
-
-# リント
-pnpm lint
-
-# リント自動修正
-pnpm fix
-```
-
-### 特定パッケージのテスト
+## コマンド
 
 ```bash
-# パッケージを指定してテスト
-pnpm --filter @app/query unit
-pnpm --filter @app/command-interface-adapter-impl unit
-pnpm --filter web unit
+# 開発
+pnpm dev           # 全パッケージの開発サーバー起動
+pnpm build         # 全パッケージビルド
 
-# 特定ファイルのテスト (web パッケージ内)
-cd apps/web && pnpm vitest run src/path/to/file.test.ts
-```
+# テスト・Lint（全体）
+pnpm test          # lint + unit（CI 用）
+pnpm unit          # 全パッケージのユニットテスト
+pnpm lint          # 全パッケージの Lint
+pnpm fix           # 自動修正
 
-### データベース
-
-```bash
-pnpm db:generate   # Prismaクライアント生成
-pnpm db:migrate    # マイグレーション作成・適用 (dev)
-pnpm db:deploy     # マイグレーション適用 (prod)
-pnpm db:push       # スキーマをDBに直接反映 (dev)
+# DB
+pnpm db:generate   # Prisma クライアント生成
+pnpm db:migrate    # マイグレーション実行
 pnpm db:seed       # シードデータ投入
+
+# Web アプリ（apps/web/ にて個別実行）
+pnpm lint:eslint    # ESLint
+pnpm lint:stylelint # Stylelint
+pnpm lint:prettier  # Prettier チェック
+pnpm lint:tsc       # TypeScript 型チェック
+pnpm unit           # Vitest ユニットテスト
+pnpm e2e            # Playwright E2E テスト
+pnpm vrt:compare    # VRT（ビジュアルリグレッションテスト）
 ```
 
-### Docker
+### 単一パッケージのテスト実行
+
+各パッケージ（`packages/command/domain/`, `packages/command/processor/`, `packages/query/`, `apps/web/`）は独立したテスト設定を持つ。単一ファイルのテストを実行する場合は対象パッケージの `package.json` のある階層で実行する。
 
 ```bash
-docker compose up -d    # dev環境起動 (app + db)
-docker compose down     # 停止
+# 例: command/domain のテスト
+cd packages/command/domain && pnpm unit
+
+# 例: web アプリの unit テストのみ
+cd apps/web && pnpm unit
 ```
 
 ## アーキテクチャ
 
-### 全体構成
-
-**CQRS + クリーンアーキテクチャ** に基づくモノレポ (pnpm workspaces + Turborepo)。
+### パッケージ構成
 
 ```
-apps/web                    # Next.js フロントエンド + Server Actions
+apps/web/                              # Next.js アプリケーション（フロントエンド + Server Actions）
 packages/
   command/
-    domain/                 # @app/command-domain      ドメインモデル・ValueObject・エラー定義
-    interface-adapter-if/   # @app/command-interface-adapter-if  各種インターフェース定義 + Mock
-    processor/              # @app/command-processor   ビジネスロジック実装 (tsyringe DI)
-    interface-adapter-impl/ # @app/command-interface-adapter-impl  Processorファクトリ
-  query/                    # @app/query               Read Model (QueryProcessor + DTO)
-  db/                       # @app/db                  Prisma Client + ファクトリ + シード
-  infrastructure/           # @app/infrastructure      Logger, Brand型, Result型, ID生成(UUIDv7)
-  ui/                       # @app/ui                  共有UIコンポーネント (Radix UI + Tailwind)
-  typescript-config/        # TypeScript共通設定
-  eslint-config/            # ESLint共通設定
+    domain/                            # エンティティ・値オブジェクト・ドメインロジック
+    interface-adapter-if/              # Presenter, Processor, Repository のインターフェース定義
+    interface-adapter-impl/            # Prisma を使った Repository 実装 + DI ブートストラップ
+    processor/                         # コマンドのユースケース実装（tsyringe で DI）
+  query/                               # クエリ処理（Prisma 直接参照、読み取り専用）
+  db/                                  # Prisma スキーマ・クライアント・テスト用ファクトリー
+  infrastructure/                      # 共有ユーティリティ（ID生成、Logger、Result 型、Brand 型）
+  ui/                                  # 共有 UI コンポーネント（Button, Input）
+  eslint-config/                       # 共有 ESLint 設定
+  typescript-config/                   # 共有 TypeScript 設定
+  stylelint-config/                    # 共有 Stylelint 設定
 ```
 
-### データフロー
+### CQRS + DDD のデータフロー
 
-**コマンドサイド (書き込み):**
+**Command（書き込み）:**
+`apps/web` の Server Action
+→ `command/interface-adapter-impl` の `bootstrap.ts` で DI コンテナから `CommandProcessor` を解決
+→ `command/processor` のユースケース実装
+→ `command/interface-adapter-impl` の Prisma リポジトリ実装
+→ `Presenter` インターフェース経由で結果を返す
+
+**Query（読み取り）:**
+`apps/web` の Server Component / Server Action
+→ `query` パッケージの QueryProcessor（Prisma 直接使用）
+→ DTO として UI へ
+
+### 依存注入
+
+`tsyringe` を使用。デコレーターで注入する（`@injectable()`, `@inject("Token")`）。DI コンテナの設定は `packages/command/interface-adapter-impl/src/bootstrap.ts` にある。
+
+### テスト戦略
+
+| 層 | テストランナー | 対象 |
+|---|---|---|
+| ドメイン | Jest | `packages/command/domain/` |
+| コマンドプロセッサー | Jest | `packages/command/processor/` |
+| クエリ + リポジトリ | Jest + @quramy/jest-prisma | `packages/query/`, `packages/command/interface-adapter-impl/` |
+| Web コンポーネント | Vitest | `apps/web/` |
+| Storybook VRT | Vitest + Storycap + reg-cli | `apps/web/` |
+| E2E | Playwright | `apps/web/e2e/` |
+
+インテグレーションテスト（`packages/query/` と `interface-adapter-impl/`）は実際の DB に接続する（モック禁止）。テスト用スキーマは `DATABASE_URL?schema=test` を使用。
+
+### Path Aliases（apps/web）
+
 ```
-Next.js Server Action
-  → @app/command-interface-adapter-impl の createXxxProcessor()
-    → @app/command-processor (tsyringe DI + @app/command-domain)
-      → @app/db (Prisma)
+#actions/*   → app/_actions/
+#components/* → app/_components/*/index.tsx
+#lib/*        → app/_lib/
+#lib/session  → Storybook 時はモック実装に切り替わる
+#lib/dal      → Storybook 時はモック実装に切り替わる
 ```
-
-**クエリサイド (読み取り):**
-```
-Next.js Server Component / dal.ts
-  → @app/query の createTodoProcessor()
-    → @app/db (Prisma)
-    → DTO として返却
-```
-
-### 重要なパターン
-
-**Processor の命名規則:**
-- コマンドサイド: `LoginAuthenticationCommandProcessor`, `TodoCommandProcessor`
-- クエリサイド: `TodoQueryProcessor`
-- Aggregate単位 (コマンド) / ReadModel単位 (クエリ) でProcessorを分割
-
-**インターフェース分離:**
-- `@app/command-interface-adapter-if` にインターフェース + Mock 実装を置く
-- 実装は `@app/command-processor` と `@app/command-interface-adapter-impl` に分離
-
-**DI:** tsyringe を使用。`reflect-metadata` のインポートが必要 (setup.ts で設定済み)
-
-**Result型:** エラー処理に `@app/infrastructure` の Result型を使用
-
-**Brand型:** 型安全な識別子 (UserId, TodoId 等) に `@app/infrastructure` の Brand型を使用
-
-### テスト構成
-
-- **web:** Vitest (unit) + Playwright (e2e) + Storybook (visual)
-- **その他パッケージ:** Jest + ts-jest (ESM モード)
 
 ### 環境変数
 
-`.env.example` を参照。必須:
-- `DATABASE_URL` - PostgreSQL接続文字列
-- `SESSION_SECRET` - JWT署名用シークレット (32文字以上)
+`.env.example` を参照。最低限必要なもの：
+- `DATABASE_URL` — PostgreSQL 接続文字列
+- `SESSION_SECRET` — 32 文字以上の JWT 署名シークレット
+- `ADMIN_USERNAME`, `ADMIN_PASSWORD` — シードデータ用管理者アカウント
 
-### セッション管理
+ローカル開発は `compose.yml`（Docker Compose）で DB を起動する。
 
-`apps/web/app/_lib/session.ts` で JWT + Cookie ベースのセッション管理。有効期限7日。
-`apps/web/app/_lib/dal.ts` でキャッシュ付きの認証済みユーザー取得・クエリ実行。
+## コミットメッセージ
+
+[Conventional Commits](https://www.conventionalcommits.org/) に従う。
+
+```
+<type>[optional scope]: <description>
+```
+
+主な type:
+- `feat` — 新機能
+- `fix` — バグ修正
+- `refactor` — 動作変更を伴わないコード変更
+- `test` — テストの追加・修正
+- `chore` — ビルド・ツール・設定の変更
+- `docs` — ドキュメントのみの変更
+
+破壊的変更は `!` を付ける（例: `feat!: ...`）またはフッターに `BREAKING CHANGE:` を記載する。
