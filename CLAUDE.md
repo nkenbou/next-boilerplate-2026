@@ -134,3 +134,27 @@ packages/
 - `docs` — ドキュメントのみの変更
 
 破壊的変更は `!` を付ける（例: `feat!: ...`）またはフッターに `BREAKING CHANGE:` を記載する。
+
+## テキスト規約
+
+ドキュメント・コードコメント・テスト名（`describe`, `it`, `test` など）・テストデータなどのテキストでは、カッコは半角を使用し英語のルールに準拠する。
+
+- `(` の直前: スペースを入れる
+- `(` の直後・`)` の直前: スペースなし
+- `)` の直後: 単語が続く場合はスペースを入れ、`.` `,` `:` `。` `、` などの記号が続く場合はスペースなし
+
+```
+// 良い例
+Todo (created by user)
+returns error (invalid input).
+エラーを返す (無効な入力)。
+Todo (with due date): ...
+Todo (期限あり)、...
+
+// 悪い例
+Todo（created by user）   // 全角カッコ
+Todo(created by user)     // ( の前のスペースなし
+Todo ( created by user )  // ( の後・) の前に余分なスペース
+returns error (invalid input) .  // ) の後の記号前にスペース
+エラーを返す (無効な入力) 。  // ) の後の句読点前にスペース
+```
