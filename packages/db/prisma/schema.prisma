@@ -16,7 +16,7 @@ generator fabbrica {
 }
 
 model User {
-  userId      String @id @default(uuid()) @map("user_id")
+  userId      String @id @map("user_id")
   username    String @unique
   password    String
   displayName String @map("display_name")
@@ -26,11 +26,11 @@ model User {
 }
 
 model Todo {
-  todoId      String    @id @default(uuid()) @map("todo_id")
+  todoId      String    @id @map("todo_id")
   title       String
-  description String    @default("")
-  status      String    @default("pending")
-  createdAt   DateTime  @default(now()) @map("created_at")
+  description String
+  status      String
+  createdAt   DateTime  @map("created_at")
   dueDate     DateTime? @map("due_date")
   userId      String    @map("user_id")
   user        User      @relation(fields: [userId], references: [userId])

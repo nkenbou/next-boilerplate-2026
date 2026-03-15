@@ -12,8 +12,9 @@ CREATE TABLE "users" (
 CREATE TABLE "todos" (
     "todo_id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
-    "status" TEXT NOT NULL DEFAULT 'pending',
-    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "description" TEXT NOT NULL,
+    "status" TEXT NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL,
     "due_date" TIMESTAMP(3),
     "user_id" TEXT NOT NULL,
 
