@@ -79,10 +79,14 @@ export abstract class AbstractLogger {
     return String(message);
   }
 
+  protected contextPrefix(): string {
+    return "";
+  }
+
   protected createMessage(logLevel: LogLevel, message: MessageLike): string {
     const callSite = util.getCallSites(3).at(2)!;
     const functionName = callSite.functionName;
-    return `${logLabel(logLevel)}\t${functionName && `${functionName}()\t`}${message.toString()}`;
+    return `${logLabel(logLevel)}\t${this.contextPrefix()}${functionName && `${functionName}()\t`}${message.toString()}`;
   }
 }
 
@@ -112,8 +116,29 @@ export class LoggerMock extends AbstractLogger implements Logger {
   fatal(_message: unknown): void {}
 }
 
+export class GenericLogger extends AbstractLogger implements Logger {
+  protected constructor(private readonly className?: string) {
+    super();
+  }
+
+  static create(): Logger {
+    return new GenericLogger();
+  }
+
+  classLogger(klass: ClassLike): Logger {
+    return new GenericLogger(klass.name);
+  }
+
+  protected contextPrefix(): string {
+    return this.className ? `${this.className}.` : "";
+  }
+}
+
 export class SessionLogger extends AbstractLogger implements Logger {
-  protected constructor(protected readonly sessionId: string) {
+  protected constructor(
+    private readonly sessionId: string,
+    private readonly className?: string,
+  ) {
     super();
   }
 
@@ -122,30 +147,11 @@ export class SessionLogger extends AbstractLogger implements Logger {
   }
 
   classLogger(klass: ClassLike): Logger {
-    return new ClassLogger(klass, this.sessionId);
+    return new SessionLogger(this.sessionId, klass.name);
   }
 
-  protected createMessage(logLevel: LogLevel, message: MessageLike): string {
-    const callSite = util.getCallSites(3).at(2)!;
-    const functionName = callSite.functionName;
-    return `${logLabel(logLevel)}\t${this.sessionId} \t${functionName && `${functionName}()\t`}${message.toString()}`;
-  }
-}
-
-class ClassLogger extends SessionLogger {
-  private readonly className: string;
-
-  constructor(
-    readonly klass: ClassLike,
-    readonly sessionId: string,
-  ) {
-    super(sessionId);
-    this.className = klass.name;
-  }
-
-  protected createMessage(logLevel: LogLevel, message: MessageLike): string {
-    const callSite = util.getCallSites(3).at(2)!;
-    const functionName = callSite.functionName;
-    return `${logLabel(logLevel)}\t${this.sessionId} \t${this.className}.${functionName}()\t${message.toString()}`;
+  protected contextPrefix(): string {
+    const classPrefix = this.className ? `${this.className}.` : "";
+    return `${this.sessionId} \t${classPrefix}`;
   }
 }
