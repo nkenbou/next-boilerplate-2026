@@ -3,6 +3,7 @@ import { initialize } from "@app/db/fabbrica";
 import bcrypt from "bcryptjs";
 import type { Page } from "@playwright/test";
 import { test as dbTest } from "./db.fixture";
+import { LoginPage } from "../page-objects";
 
 type AuthFixtures = {
   authenticatedPage: Page;
@@ -18,10 +19,9 @@ export const test = dbTest.extend<AuthFixtures>({
 
     await UserFactory.create({ username, password: hashedPassword });
 
-    await page.goto("/login");
-    await page.locator('[name="username"]').fill(username);
-    await page.locator('[name="password"]').fill(password);
-    await page.locator('[type="submit"]').click();
+    const loginPage = new LoginPage(page);
+    await loginPage.goto();
+    await loginPage.login(username, password);
     await page.waitForURL("/");
 
     await use(page);
