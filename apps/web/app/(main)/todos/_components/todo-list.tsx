@@ -19,7 +19,7 @@ export function TodoList({ todos }: Props): JSX.Element {
   return (
     <Flex direction="column" gap="3" mt="4">
       {todos.map((todo) => (
-        <Card key={todo.id}>
+        <Card key={todo.id} role="article" aria-label={todo.title}>
           <Flex align="center" justify="between">
             <Box>
               <Text

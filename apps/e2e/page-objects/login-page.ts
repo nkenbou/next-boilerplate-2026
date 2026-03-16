@@ -7,9 +7,9 @@ export class LoginPage {
   readonly errorAlert: Locator;
 
   constructor(private readonly page: Page) {
-    this.usernameInput = page.locator('[name="username"]');
-    this.passwordInput = page.locator('[name="password"]');
-    this.submitButton = page.locator('[type="submit"]');
+    this.usernameInput = page.getByLabel("ユーザー名");
+    this.passwordInput = page.getByLabel("パスワード");
+    this.submitButton = page.getByRole("button", { name: "ログイン" });
     this.errorAlert = page.getByRole("alert");
   }
 

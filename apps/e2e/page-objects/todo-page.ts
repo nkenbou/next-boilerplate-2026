@@ -5,7 +5,7 @@ export class TodoPage {
   readonly submitButton: Locator;
 
   constructor(private readonly page: Page) {
-    this.titleInput = page.locator('[name="title"]');
+    this.titleInput = page.getByRole("textbox", { name: "タイトル" });
     this.submitButton = page.getByRole("button", { name: "追加" });
   }
 
@@ -19,14 +19,10 @@ export class TodoPage {
   }
 
   getTodoCard(title: string): Locator {
-    return this.page.getByText(title).first();
+    return this.page.getByRole("article", { name: title });
   }
 
   getCompleteButton(title: string): Locator {
-    return this.page
-      .getByText(title)
-      .first()
-      .locator("../..")
-      .getByRole("button", { name: "完了" });
+    return this.getTodoCard(title).getByRole("button", { name: "完了" });
   }
 }
