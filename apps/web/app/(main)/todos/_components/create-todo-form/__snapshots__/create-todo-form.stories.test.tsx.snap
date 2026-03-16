@@ -31,6 +31,7 @@ exports[`CreateTodoForm >  1`] = `
                 class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
               >
                 <input
+                  aria-label="タイトル"
                   class="rt-reset rt-TextFieldInput"
                   name="title"
                   placeholder="新しいタスクを入力..."
@@ -93,6 +94,7 @@ exports[`CreateTodoForm >  2`] = `
                 class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
               >
                 <input
+                  aria-label="タイトル"
                   class="rt-reset rt-TextFieldInput"
                   name="title"
                   placeholder="新しいタスクを入力..."
@@ -164,6 +166,7 @@ exports[`CreateTodoForm >  3`] = `
                 class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
               >
                 <input
+                  aria-label="タイトル"
                   class="rt-reset rt-TextFieldInput"
                   name="title"
                   placeholder="新しいタスクを入力..."
@@ -235,6 +238,7 @@ exports[`CreateTodoForm >  4`] = `
                 class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
               >
                 <input
+                  aria-label="タイトル"
                   class="rt-reset rt-TextFieldInput"
                   name="title"
                   placeholder="新しいタスクを入力..."
@@ -308,6 +312,7 @@ exports[`CreateTodoForm >  5`] = `
                 class="rt-TextFieldRoot rt-r-size-2 rt-variant-surface"
               >
                 <input
+                  aria-label="タイトル"
                   class="rt-reset rt-TextFieldInput"
                   name="title"
                   placeholder="新しいタスクを入力..."
