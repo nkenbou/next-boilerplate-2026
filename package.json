@@ -4,7 +4,6 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "storybook": "turbo run storybook",
     "test": "pnpm lint && pnpm unit",
     "unit": "turbo run unit",
     "lint": "turbo run lint",

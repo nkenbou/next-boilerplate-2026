@@ -22,6 +22,8 @@ pnpm fix           # 自動修正
 # DB
 pnpm db:generate   # Prisma クライアント生成
 pnpm db:migrate    # マイグレーション実行（dev/test/e2e スキーマ）
+pnpm db:deploy     # マイグレーション本番適用（dev/test/e2e スキーマ）
+pnpm db:push       # スキーマ同期（dev/test/e2e スキーマ）
 pnpm db:seed       # シードデータ投入
 
 # E2E テスト（apps/e2e/ にて個別実行）
@@ -95,14 +97,14 @@ packages/
 
 ### テスト戦略
 
-| 層 | テストランナー | 対象 |
-|---|---|---|
-| ドメイン | Jest | `packages/command/domain/` |
-| コマンドプロセッサー | Jest | `packages/command/processor/` |
-| クエリ + リポジトリ | Jest + @quramy/jest-prisma | `packages/query/`, `packages/command/interface-adapter-impl/` |
-| Web コンポーネント | Vitest | `apps/web/` |
-| Storybook VRT | Vitest + Storycap + reg-cli | `apps/web/` |
-| E2E | Playwright | `apps/e2e/` |
+| 層                   | テストランナー              | 対象                                                          |
+| -------------------- | --------------------------- | ------------------------------------------------------------- |
+| ドメイン             | Jest                        | `packages/command/domain/`                                    |
+| コマンドプロセッサー | Jest                        | `packages/command/processor/`                                 |
+| クエリ + リポジトリ  | Jest + @quramy/jest-prisma  | `packages/query/`, `packages/command/interface-adapter-impl/` |
+| Web コンポーネント   | Vitest                      | `apps/web/`                                                   |
+| Storybook VRT        | Vitest + Storycap + reg-cli | `apps/web/`                                                   |
+| E2E                  | Playwright                  | `apps/e2e/`                                                   |
 
 インテグレーションテスト（`packages/query/` と `interface-adapter-impl/`）は実際の DB に接続する（モック禁止）。テスト用スキーマは `DATABASE_URL?schema=test` を使用。E2E テストは `DATABASE_URL?schema=e2e` を使用。
 
@@ -119,6 +121,7 @@ packages/
 ### 環境変数
 
 `.env.example` を参照。最低限必要なもの：
+
 - `DATABASE_URL` — PostgreSQL 接続文字列
 - `SESSION_SECRET` — 32 文字以上の JWT 署名シークレット
 - `ADMIN_USERNAME`, `ADMIN_PASSWORD` — シードデータ用管理者アカウント
@@ -134,6 +137,7 @@ packages/
 ```
 
 主な type:
+
 - `feat` — 新機能
 - `fix` — バグ修正
 - `refactor` — 動作変更を伴わないコード変更
