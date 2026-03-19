@@ -42,6 +42,7 @@ export default defineConfig({
             "reflect-metadata",
             "@storybook/nextjs-vite",
             "@radix-ui/themes",
+            "next/cache",
           ],
         },
         test: {
