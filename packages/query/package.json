@@ -8,7 +8,6 @@
     "./dto": "./src/dto.ts"
   },
   "scripts": {
-    "build": "tsc -p ./tsconfig.build.json",
     "test": "run-p -l -c --aggregate-output lint unit",
     "unit": "NODE_OPTIONS='--experimental-vm-modules' jest",
     "lint": "run-p -l -c --aggregate-output lint:*",

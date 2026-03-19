@@ -17,7 +17,6 @@
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
     "unit": {
-      "dependsOn": ["build"],
       "inputs": ["**/*.ts", "**/*.tsx"]
     },
     "lint": {
