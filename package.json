@@ -19,7 +19,7 @@
   "devDependencies": {
     "@app/eslint-config": "workspace:*",
     "@app/typescript-config": "workspace:*",
-    "turbo": "^2.3.3"
+    "turbo": "^2.8.20"
   },
   "packageManager": "pnpm@10.0.0",
   "engines": {
@@ -27,7 +27,7 @@
   },
   "pnpm": {
     "overrides": {
-      "reg-cli": "0.18.6"
+      "reg-cli": "0.18.14"
     },
     "peerDependencyRules": {
       "allowedVersions": {

@@ -21,7 +21,7 @@
   "devDependencies": {
     "@app/eslint-config": "workspace:*",
     "@app/typescript-config": "workspace:*",
-    "@jest/globals": "^30.0.0",
+    "@jest/globals": "^30.3.0",
     "@quramy/jest-prisma": "^1.8.2",
     "@quramy/jest-prisma-core": "^1.8.2",
     "@quramy/jest-prisma-node": "^1.8.2",
@@ -29,7 +29,7 @@
     "@types/jest": "^30.0.0",
     "@types/node": "22.12.0",
     "eslint": "^9.39.0",
-    "jest": "^30.0.0",
+    "jest": "^30.3.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.8.1",
     "ts-jest": "^29.1.1",
