@@ -8,6 +8,7 @@ ARG GROUP_NAME=node
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ffmpeg \
+    ripgrep \
     sudo \
  && npx playwright install-deps \
  && apt-get clean \
