@@ -78,10 +78,10 @@ export const AnyError: Story = {
 
 // Storybook Interaction Test。
 // play 関数でユーザー操作を再現し、動作を検証する。
-// storybook プロジェクト（Playwright/Chromium）で Vitest テストとして自動実行され、
+// storybook プロジェクト (Playwright/Chromium) で Vitest テストとして自動実行され、
 // Storybook UI の「Interactions」タブでも操作ステップを確認できる。
 //
-// テストの観点: ユーザー操作（入力・クリック）がアクションに正しく繋がるか（動作の検証）。
+// テストの観点: ユーザー操作 (入力・クリック) がアクションに正しく繋がるか (動作の検証)。
 // カタログとして見せる価値のある操作シナリオをここに定義する。
 // カタログに含めるには細かすぎる詳細なシナリオは create-todo-form.stories.test.tsx に書く。
 //

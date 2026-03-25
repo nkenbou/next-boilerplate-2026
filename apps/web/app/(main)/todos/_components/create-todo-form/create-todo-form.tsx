@@ -29,7 +29,7 @@ export function CreateTodoForm({
           )}
           <TextArea
             name="description"
-            placeholder="説明（任意）"
+            placeholder="説明 (任意)"
             defaultValue={state?.description}
           />
           {state?.errors?.description && (

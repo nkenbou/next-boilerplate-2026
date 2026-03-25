@@ -4,12 +4,12 @@
 //
 // このファイルでのテストは以下の2つの観点で使い分ける:
 //
-// 1. ストーリーの静的なレンダリング検証（DOM の初期状態・エラー表示など）
+// 1. ストーリーの静的なレンダリング検証 (DOM の初期状態・エラー表示など)
 //    args を差し替えるだけで再現できる状態は、ストーリーをそのままレンダリングして検証する。
 //
 // 2. ユーザー操作を伴う詳細な検証
 //    Storybook のカタログとして見せるには細かすぎてストーリーに含めたくない操作シナリオや、
-//    操作後にのみ到達できる DOM 状態（ダイアログが開いた状態など）の検証に使う。
+//    操作後にのみ到達できる DOM 状態 (ダイアログが開いた状態など) の検証に使う。
 //    操作手順はストーリーの play 関数に定義して Story.play() で流用するか、
 //    userEvent を直接記述する。
 import { composeStories } from "@storybook/nextjs-vite";
@@ -64,7 +64,7 @@ describe("CreateTodoForm", () => {
   });
 
   // create-todo-form.stories.tsx の SubmitWithTitle.play() を呼び出してフォーム送信を再現する。
-  // 動作の検証（アクションが呼ばれたか）は play 関数内で完結しているため、
+  // 動作の検証 (アクションが呼ばれたか) は play 関数内で完結しているため、
   // ここでは操作後の DOM 状態をスナップショットで記録することに集中できる。
   it(SubmitWithTitle.name, async () => {
     const { container } = render(<SubmitWithTitle />);

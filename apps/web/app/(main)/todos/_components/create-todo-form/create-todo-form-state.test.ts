@@ -39,7 +39,7 @@ describe("CreateTodoFormState", () => {
     });
   });
 
-  it("presentValidationError は errors をマージする（複数フィールド）", () => {
+  it("presentValidationError は errors をマージする (複数フィールド)", () => {
     const state = new CreateTodoFormState(undefined, vi.fn());
     state.presentFormData({ title: "", description: "a".repeat(501) });
     state.presentValidationError("title", "INVALID_TODO_TITLE_EMPTY");

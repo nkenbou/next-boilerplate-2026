@@ -12,7 +12,7 @@ export abstract class DueDate {
   abstract toString(): string;
 
   /**
-   * 信頼済みの値からインスタンスを生成する（DB・内部ロジック用）
+   * 信頼済みの値からインスタンスを生成する (DB・内部ロジック用)
    * value が undefined / null の場合は NullDueDate を返す
    */
   static of(value?: Date | null): DueDate {
@@ -20,8 +20,8 @@ export abstract class DueDate {
   }
 
   /**
-   * 外部入力を検証してインスタンスを生成する（Server Action・フォーム境界用）
-   * 現在は型チェックのみ。将来的に業務ルール（過去日不可など）を追加する起点。
+   * 外部入力を検証してインスタンスを生成する (Server Action・フォーム境界用)
+   * 現在は型チェックのみ。将来的に業務ルール (過去日不可など) を追加する起点。
    */
   static validate(
     value?: Date | null,
@@ -42,7 +42,7 @@ export abstract class DueDate {
   }
 }
 
-// 期限あり（module 内部クラス）
+// 期限あり (module 内部クラス)
 class PresentDueDate extends DueDate {
   readonly value: Date;
 
@@ -64,7 +64,7 @@ class PresentDueDate extends DueDate {
   }
 }
 
-// 期限なし・Null Object（module 内部クラス、シングルトン）
+// 期限なし・Null Object (module 内部クラス、シングルトン)
 class NullDueDate extends DueDate {
   static readonly instance: NullDueDate = new NullDueDate();
   readonly value = null;

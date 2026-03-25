@@ -28,7 +28,7 @@ describe("TodoQueryProcessor", () => {
     expect(todos).toHaveLength(1);
   });
 
-  it("findMany に userId が渡る（別ユーザーのデータは DB レベルで除外される）", async () => {
+  it("findMany に userId が渡る (別ユーザーのデータは DB レベルで除外される)", async () => {
     const mockPrisma = {
       todo: {
         findMany: jest.fn().mockImplementation(() => Promise.resolve([])),

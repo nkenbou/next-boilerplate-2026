@@ -21,30 +21,30 @@ pnpm fix           # 自動修正
 
 # DB
 pnpm db:generate   # Prisma クライアント生成
-pnpm db:migrate    # マイグレーション実行（dev/test/e2e スキーマ）
-pnpm db:deploy     # マイグレーション本番適用（dev/test/e2e スキーマ）
-pnpm db:push       # スキーマ同期（dev/test/e2e スキーマ）
+pnpm db:migrate    # マイグレーション実行 (dev/test/e2e スキーマ)
+pnpm db:deploy     # マイグレーション本番適用 (dev/test/e2e スキーマ)
+pnpm db:push       # スキーマ同期 (dev/test/e2e スキーマ)
 pnpm db:seed       # シードデータ投入
 
-# E2E テスト（apps/e2e/ にて個別実行）
-pnpm e2e           # Turbo 経由で E2E テスト実行（CI: web build → start）
-pnpm --filter @app/e2e e2e        # ローカル（dev サーバーを再利用）
+# E2E テスト (apps/e2e/ にて個別実行)
+pnpm e2e           # Turbo 経由で E2E テスト実行 (CI: web build → start)
+pnpm --filter @app/e2e e2e        # ローカル (dev サーバーを再利用)
 pnpm --filter @app/e2e e2e:ui     # Playwright UI モード
 pnpm --filter @app/e2e e2e:report # レポート表示
 
-# Web アプリ（apps/web/ にて個別実行）
+# Web アプリ (apps/web/ にて個別実行)
 pnpm lint:eslint    # ESLint
 pnpm lint:stylelint # Stylelint
 pnpm lint:prettier  # Prettier チェック
 pnpm lint:tsc       # TypeScript 型チェック
 pnpm unit           # Vitest ユニットテスト
 pnpm e2e            # Playwright E2E テスト
-pnpm vrt:compare    # VRT（ビジュアルリグレッションテスト）
+pnpm vrt:compare    # VRT (ビジュアルリグレッションテスト)
 ```
 
 ### 単一パッケージのテスト実行
 
-各パッケージ（`packages/command/domain/`, `packages/command/processor/`, `packages/query/`, `apps/web/`）は独立したテスト設定を持つ。単一ファイルのテストを実行する場合は対象パッケージの `package.json` のある階層で実行する。
+各パッケージ (`packages/command/domain/`, `packages/command/processor/`, `packages/query/`, `apps/web/`) は独立したテスト設定を持つ。単一ファイルのテストを実行する場合は対象パッケージの `package.json` のある階層で実行する。
 
 ```bash
 # 例: command/domain のテスト
@@ -60,18 +60,18 @@ cd apps/web && pnpm unit
 
 ```
 apps/
-  web/                               # Next.js アプリケーション（フロントエンド + Server Actions）
-  e2e/                               # Playwright E2E テスト（独立パッケージ）
+  web/                               # Next.js アプリケーション (フロントエンド + Server Actions)
+  e2e/                               # Playwright E2E テスト (独立パッケージ)
 packages/
   command/
     domain/                            # エンティティ・値オブジェクト・ドメインロジック
     interface-adapter-if/              # Presenter, Processor, Repository のインターフェース定義
     interface-adapter-impl/            # Prisma を使った Repository 実装 + DI ブートストラップ
-    processor/                         # コマンドのユースケース実装（tsyringe で DI）
+    processor/                         # コマンドのユースケース実装 (tsyringe で DI)
   query/                               # クエリ処理（Prisma 直接参照、読み取り専用）
   db/                                  # Prisma スキーマ・クライアント・テスト用ファクトリー
-  infrastructure/                      # 共有ユーティリティ（ID生成、Logger、Result 型、Brand 型）
-  ui/                                  # 共有 UI コンポーネント（Button, Input）
+  infrastructure/                      # 共有ユーティリティ (ID生成、Logger、Result 型、Brand 型)
+  ui/                                  # 共有 UI コンポーネント (Button, Input)
   eslint-config/                       # 共有 ESLint 設定
   typescript-config/                   # 共有 TypeScript 設定
   stylelint-config/                    # 共有 Stylelint 設定
@@ -79,21 +79,21 @@ packages/
 
 ### CQRS + DDD のデータフロー
 
-**Command（書き込み）:**
+**Command (書き込み)**:
 `apps/web` の Server Action
 → `command/interface-adapter-impl` の `bootstrap.ts` で DI コンテナから `CommandProcessor` を解決
 → `command/processor` のユースケース実装
 → `command/interface-adapter-impl` の Prisma リポジトリ実装
 → `Presenter` インターフェース経由で結果を返す
 
-**Query（読み取り）:**
+**Query (読み取り)**:
 `apps/web` の Server Component / Server Action
-→ `query` パッケージの QueryProcessor（Prisma 直接使用）
+→ `query` パッケージの QueryProcessor (Prisma 直接使用)
 → DTO として UI へ
 
 ### 依存注入
 
-`tsyringe` を使用。デコレーターで注入する（`@injectable()`, `@inject("Token")`）。DI コンテナの設定は `packages/command/interface-adapter-impl/src/bootstrap.ts` にある。
+`tsyringe` を使用。デコレーターで注入する (`@injectable()`, `@inject("Token")`)。DI コンテナの設定は `packages/command/interface-adapter-impl/src/bootstrap.ts` にある。
 
 ### テスト戦略
 
@@ -106,9 +106,9 @@ packages/
 | Storybook VRT        | Vitest + Storycap + reg-cli | `apps/web/`                                                   |
 | E2E                  | Playwright                  | `apps/e2e/`                                                   |
 
-インテグレーションテスト（`packages/query/` と `interface-adapter-impl/`）は実際の DB に接続する（モック禁止）。テスト用スキーマは `DATABASE_URL?schema=test` を使用。E2E テストは `DATABASE_URL?schema=e2e` を使用。
+インテグレーションテスト (`packages/query/` と `interface-adapter-impl/`) は実際の DB に接続する (モック禁止)。テスト用スキーマは `DATABASE_URL?schema=test` を使用。E2E テストは `DATABASE_URL?schema=e2e` を使用。
 
-### Path Aliases（apps/web）
+### Path Aliases (apps/web)
 
 ```
 #actions/*   → app/_actions/
@@ -126,7 +126,7 @@ packages/
 - `SESSION_SECRET` — 32 文字以上の JWT 署名シークレット
 - `ADMIN_USERNAME`, `ADMIN_PASSWORD` — シードデータ用管理者アカウント
 
-ローカル開発は `compose.yml`（Docker Compose）で DB を起動する。
+ローカル開発は `compose.yml` (Docker Compose) で DB を起動する。
 
 ## コミットメッセージ
 
@@ -145,11 +145,21 @@ packages/
 - `chore` — ビルド・ツール・設定の変更
 - `docs` — ドキュメントのみの変更
 
-破壊的変更は `!` を付ける（例: `feat!: ...`）またはフッターに `BREAKING CHANGE:` を記載する。
+破壊的変更は `!` を付ける (例: `feat!: ...`) またはフッターに `BREAKING CHANGE:` を記載する。
 
 ## テキスト規約
 
-ドキュメント・コードコメント・テスト名（`describe`, `it`, `test` など）・テストデータなどのテキストでは、カッコは半角を使用し英語のルールに準拠する。
+定義リスト形式 (`**用語**:` の太字ラベル) を使う場合、コロンはボールドの外に配置する。
+
+```
+// 良い例
+**Command (書き込み)**:
+
+// 悪い例
+**Command (書き込み):**
+```
+
+ドキュメント・コードコメント・テスト名 (`describe`, `it`, `test` など)・テストデータなどのテキストでは、カッコは半角を使用し英語のルールに準拠する。
 
 - `(` の直前: スペースを入れる
 - `(` の直後・`)` の直前: スペースなし

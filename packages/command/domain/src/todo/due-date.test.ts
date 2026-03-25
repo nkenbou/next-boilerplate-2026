@@ -28,11 +28,11 @@ describe("DueDate", () => {
       expect(DueDate.of(date).toDTO()).toBe(date);
     });
 
-    it("of() と of(null) は同一参照（シングルトン）", () => {
+    it("of() と of(null) は同一参照 (シングルトン)", () => {
       expect(DueDate.of()).toBe(DueDate.of(null));
     });
 
-    it("of() と of(undefined) は同一参照（シングルトン）", () => {
+    it("of() と of(undefined) は同一参照 (シングルトン)", () => {
       expect(DueDate.of()).toBe(DueDate.of(undefined));
     });
   });
