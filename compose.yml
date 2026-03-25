@@ -1,5 +1,5 @@
 services:
-  web:
+  workspace:
     build:
       context: .
       dockerfile: ./.devcontainer/Dockerfile

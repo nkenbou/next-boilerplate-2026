@@ -1,7 +1,7 @@
 {
-  "name": "App Dev",
+  "name": "next-boilerplate-2026",
   "dockerComposeFile": "../compose.yml",
-  "service": "web",
+  "service": "workspace",
   "workspaceFolder": "/workspace",
   "remoteUser": "node",
   "postCreateCommand": "pnpm install --frozen-lockfile && pnpm db:generate && pnpm db:deploy && pnpm db:seed",
