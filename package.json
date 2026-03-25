@@ -32,8 +32,6 @@
     },
     "peerDependencyRules": {
       "allowedVersions": {
-        "@storybook/test>storybook": "10",
-        "@storybook/instrumenter>storybook": "10",
         "ts-jest>jest": "30"
       }
     }
