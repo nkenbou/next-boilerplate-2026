@@ -1,4 +1,3 @@
-export { type RequestDTO } from "./type";
 export {
   type TodoRepository,
   TodoRepositoryMock,
