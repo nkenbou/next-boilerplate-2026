@@ -1,6 +1,6 @@
 "use server";
 
-import { createLoginAuthenticationProcessor } from "@app/command-interface-adapter-impl/processors";
+import { createLoginAuthenticationProcessor } from "@app/command-interface-adapter-impl/processor";
 import { GenericLogger } from "@app/infrastructure/logger";
 import { redirect } from "next/navigation";
 import { createSession } from "#lib/session";

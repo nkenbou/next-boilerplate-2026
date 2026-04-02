@@ -1,10 +1,4 @@
 export {
-  type TodoRepository,
-  TodoRepositoryMock,
-  type UserRepository,
-  UserRepositoryMock,
-} from "./repository";
-export {
   type AnyErrorPresenter,
   type TodoPresenter,
   TodoPresenterMock,
@@ -19,4 +13,8 @@ export {
   type DataAccessClientManager,
   type TransactionManager,
   TransactionManagerMock,
-} from "./gateways";
+  type TodoRepository,
+  TodoRepositoryMock,
+  type UserRepository,
+  UserRepositoryMock,
+} from "./gateway";

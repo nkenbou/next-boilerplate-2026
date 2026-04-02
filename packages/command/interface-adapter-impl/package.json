@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./processors": "./src/processors.ts"
+    "./processor": "./src/processor.ts"
   },
   "scripts": {
     "test": "run-p -l -c --aggregate-output lint unit",

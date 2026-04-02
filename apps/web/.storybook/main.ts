@@ -27,9 +27,9 @@ const config: StorybookConfig = {
     config.resolve = config.resolve ?? {};
     config.resolve.alias = {
       ...config.resolve.alias,
-      "@app/command-interface-adapter-impl/processors": path.resolve(
+      "@app/command-interface-adapter-impl/processor": path.resolve(
         import.meta.dirname,
-        "./mocks/@app/command/processors.mock.ts",
+        "./mocks/@app/command/processor.mock.ts",
       ),
       "@app/query/processors": path.resolve(
         import.meta.dirname,

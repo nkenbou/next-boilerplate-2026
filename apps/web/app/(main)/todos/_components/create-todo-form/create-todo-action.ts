@@ -1,6 +1,6 @@
 "use server";
 
-import { createTodoProcessor } from "@app/command-interface-adapter-impl/processors";
+import { createTodoProcessor } from "@app/command-interface-adapter-impl/processor";
 import { SessionLogger } from "@app/infrastructure/logger";
 import { revalidatePath } from "next/cache";
 import { verifySession } from "#lib/session";

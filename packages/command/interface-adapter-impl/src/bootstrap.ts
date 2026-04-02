@@ -5,7 +5,7 @@ import {
   PrismaTodoRepository,
   PrismaTransactionManager,
   PrismaUserRepository,
-} from "./gateways";
+} from "./gateway";
 
 container.register(
   "DataAccessClientManager",
