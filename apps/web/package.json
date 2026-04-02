@@ -22,7 +22,7 @@
     "fix:stylelint": "pnpm lint:stylelint --fix",
     "fix:prettier": "pnpm lint:prettier --write",
     "vrt": "reg-cli ./vrt/actual ./vrt/expected ./vrt/diff -J ./vrt/out.json -R ./vrt/index.html -M 0.01",
-    "vrt:approve": "pnpm vrt:compare -U",
+    "vrt:approve": "pnpm vrt -U",
     "vrt:reset": "rm -rf ./vrt/actual ./vrt/diff"
   },
   "imports": {

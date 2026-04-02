@@ -27,7 +27,8 @@
   "pnpm": {
     "overrides": {
       "@types/react": "19.2.14",
-      "@types/react-dom": "19.2.3"
+      "@types/react-dom": "19.2.3",
+      "reg-cli>del": "6.1.1"
     },
     "peerDependencyRules": {
       "allowedVersions": {
